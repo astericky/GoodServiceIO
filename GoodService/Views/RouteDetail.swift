@@ -41,29 +41,21 @@ struct RouteDetail: View {
                 HStack(alignment: .bottom) {
                     Spacer()
                     Button("Route Map") {
-                        self.showModal = true
+                        self.showModal.toggle()
                     }
                 }
                 .padding(.trailing, 16)
-                .sheet(isPresented: $showModal, onDismiss: {
-                    self.showModal = false
-                }) {
-                    VStack {
-                        Text("Modal woohoooW")
-                    }
-                }
             }
-            
             
             HStack {
                 Spacer()
-                VStack {
+                VStack(alignment: .center) {
                     Text(route.status)
                         .font(.title)
                         .foregroundColor(statusColor)
                     Text("STATUS")
                 }
-                Spacer()
+                Spacer(  )
             }
             .padding()
             .background(Color(red: 100 / 255, green: 100 / 255, blue: 100 / 255))
@@ -71,10 +63,11 @@ struct RouteDetail: View {
                 
             RouteDirectionTable(name: "South", routeDirectionList: route.south)
             RouteDirectionTable(name: "North", routeDirectionList: route.north)
+        }.sheet(isPresented: $showModal) {
+            RouteDetailRouteMap()
         }
     }
         
-    
     init(route: Route) {
         self.route = route
         
@@ -105,6 +98,7 @@ struct RouteDetail: View {
         return Color(red: 118 / 255, green: 118 / 255, blue: 118 / 255)
     }
 }
+
 
 #if DEBUG
 struct RouteDetail_Previews: PreviewProvider {
