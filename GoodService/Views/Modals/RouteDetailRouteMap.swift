@@ -19,7 +19,22 @@ struct RouteDetailRouteMap: View {
     
     var body: some View {
         VStack {
-            Text("Modal RouteDetailRouteMap")
+            HStack {
+                Text(routeName)
+            }
+            ScrollView {
+                ForEach(stops, id: \.id) { stop in
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Rectangle()
+                                .fill(Color.red)
+                                .frame(width: 25, height: 50)
+                            Text(stop.name)
+                            Spacer()
+                        }
+                    }.padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
+                }
+            }
         }
     }
     
@@ -30,8 +45,10 @@ struct RouteDetailRouteMap: View {
             let southRoute = routeMaps.routes[routeName]?.routings["south"]?[0] {
             
             self.northRoute = northRoute
-            northRoute.forEach {
-                if let stop = routeMaps.stops[$0] {
+            northRoute.forEach { routeItem in
+                var route = routeItem
+                route.removeLast()
+                if let stop = routeMaps.stops[route] {
                     stops.append(stop)
                 }
             }
