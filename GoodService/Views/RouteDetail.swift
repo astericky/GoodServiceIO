@@ -53,6 +53,7 @@ struct RouteDetail: View {
                     Text(route.status)
                         .font(.title)
                         .foregroundColor(statusColor)
+                        .fixedSize()
                     Text("STATUS")
                 }
                 Spacer(  )
