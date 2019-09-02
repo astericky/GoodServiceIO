@@ -10,25 +10,28 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView(selection: .constant(1)) {
+        TabView(selection: .constant(0)) {
             RouteList()
-                .tabItem({
+                .tabItem {
+                    Image("subway-3")
                     Text("Trains")
-                }).tag(1)
+                }.tag(0)
             
             VStack {
                 Text("Tab 2")
             }
-            .tabItem({
+            .tabItem {
+                Image("subway-3")
                 Text("Lines")
-            }).tag(2)
+            }.tag(1)
             
             VStack {
                 Text("Tab 3")
             }
-            .tabItem({
+            .tabItem {
+                Image(systemName: "star")
                 Text("Slow Zones")
-            }).tag(2)
+            }.tag(2)
         }
     }
 }
