@@ -13,7 +13,7 @@ struct ContentView: View {
         TabView(selection: .constant(0)) {
             RouteList()
                 .tabItem {
-                    Image("subway-3")
+                    Image("subway")
                     Text("Trains")
                 }.tag(0)
             
@@ -29,9 +29,17 @@ struct ContentView: View {
                 Text("Tab 3")
             }
             .tabItem {
-                Image(systemName: "star")
+                Image("problem")
                 Text("Slow Zones")
             }.tag(2)
+            
+            VStack {
+                Text("Tab 3")
+            }
+            .tabItem {
+                Image(systemName: "star")
+                Text("Favorites")
+            }.tag(3)
         }
     }
 }
