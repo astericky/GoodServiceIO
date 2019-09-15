@@ -32,20 +32,28 @@ struct RouteDetailRouteMap: View {
                     .clipShape(Circle())
             }
             .padding()
-            ScrollView {
-                ForEach(stops, id: \.id) { stop in
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Rectangle()
-                                .fill(self.routeBackgroundColor)
-                                .frame(width: 12, height: 24)
+            ScrollView() {
+                VStack(spacing: 0) {
+                    ForEach(stops, id: \.id) { stop in
+                        HStack() {
+                            ZStack {
+                                Rectangle()
+                                    .fill(self.routeBackgroundColor)
+                                    .frame(width: 12, height: 32)
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 6, height: 6)
+                            }
+
                             Text(stop.name)
                                 .font(.caption)
                             Spacer()
-                        }.padding(0)
-                    }.padding(.init(top: 0, leading: 48, bottom: 0, trailing: 16))
+                        }
+                    }
+                    .padding(.init(top: 0, leading: 48, bottom: 0, trailing: 48))
                 }
             }
+            
         }
     }
     
