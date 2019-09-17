@@ -18,7 +18,7 @@ struct RouteList: View {
                     RouteRow(route: route)
                 }
             }
-            .navigationBarTitle(Text("goodservice.io"))
+            .navigationBarTitle(Text("Trains"))
         }
     }
 }
