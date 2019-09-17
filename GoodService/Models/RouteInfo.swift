@@ -10,4 +10,5 @@ import Foundation
 
 struct RouteInfo: Decodable  {
     let routes: [Route]
+    let lines: [String: [Line]]
 }

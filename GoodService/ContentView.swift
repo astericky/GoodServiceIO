@@ -17,13 +17,11 @@ struct ContentView: View {
                     Text("Trains")
                 }.tag(0)
             
-            VStack {
-                Text("Tab 2")
-            }
-            .tabItem {
-                Image("railway")
-                Text("Lines")
-            }.tag(1)
+            LineBoroughList()
+                .tabItem {
+                    Image("railway")
+                    Text("Lines")
+                }.tag(1)
             
             VStack {
                 Text("Tab 3")

@@ -11,6 +11,7 @@ import SwiftUI
 
 final class RoutesInfoViewModel: ObservableObject {
     @Published var routes = routesInfo.routes
+    @Published var lines = routesInfo.lines
     
     init() {
         fetchRoutes()
@@ -19,6 +20,7 @@ final class RoutesInfoViewModel: ObservableObject {
     func fetchRoutes() {
         RouteService().getRouteInfo() {
             self.routes = $0.routes
+            self.lines = $0.lines
         }
     }
 }
