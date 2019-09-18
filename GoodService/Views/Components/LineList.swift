@@ -15,7 +15,7 @@ struct LineList: View {
     var body: some View {
         List(lines, id: \.self) { line in
             NavigationLink(destination: LineDetail(line: line)) {
-                Text(line.name)
+                LineRow(line: line)
             }
         }
         .navigationBarTitle(Text(name))
