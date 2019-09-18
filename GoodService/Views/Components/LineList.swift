@@ -23,7 +23,7 @@ struct LineList: View {
     
 }
 
-struct LineRow_Previews: PreviewProvider {
+struct LineList_Previews: PreviewProvider {
     static var previews: some View {
         LineList(name: "Manhattan", lines: routesInfo.lines["Manhattan"]!)
     }

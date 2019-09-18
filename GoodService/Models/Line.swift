@@ -11,7 +11,8 @@ import Foundation
 struct Line: Decodable, Hashable {
     let id: String
     let name: String
-//    let routes: [[String: String]]
+    let status: String
+    let routes: [LineRoute]
 //    let north: [LineData]
 //    let south: [LineData]
 }
