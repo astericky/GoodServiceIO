@@ -13,14 +13,12 @@ struct LineList: View {
     var lines: [Line]
     
     var body: some View {
-//        NavigationView {
-            List(lines, id: \.self) { line in
-                NavigationLink(destination: LineDetail(line: line)) {
-                    Text(line.name)
-                }
+        List(lines, id: \.self) { line in
+            NavigationLink(destination: LineDetail(line: line)) {
+                Text(line.name)
             }
-            .navigationBarTitle(Text(name))
-//        }
+        }
+        .navigationBarTitle(Text(name))
     }
     
 }

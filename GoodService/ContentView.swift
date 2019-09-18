@@ -23,21 +23,17 @@ struct ContentView: View {
                     Text("Lines")
                 }.tag(1)
             
-            VStack {
-                Text("Tab 3")
-            }
-            .tabItem {
-                Image("problem")
-                Text("Slow Zones")
-            }.tag(2)
+            SlowZoneList()
+                .tabItem {
+                    Image("problem")
+                    Text("Slow Zones")
+                }.tag(2)
             
-            VStack {
-                Text("Tab 3")
-            }
-            .tabItem {
-                Image(systemName: "star")
-                Text("Favorites")
-            }.tag(3)
+            FavoriteList()
+                .tabItem {
+                    Image(systemName: "star")
+                    Text("Favorites")
+                }.tag(3)
         }
     }
 }

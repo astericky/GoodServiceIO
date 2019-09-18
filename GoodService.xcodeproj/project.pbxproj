@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A3E0E472331E4A700ACE7F8 /* SlowZoneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E0E462331E4A700ACE7F8 /* SlowZoneList.swift */; };
+		2A3E0E492331E4C700ACE7F8 /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E0E482331E4C700ACE7F8 /* FavoriteList.swift */; };
 		2A505F60232F4AC400B9D908 /* LineList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A505F5F232F4AC400B9D908 /* LineList.swift */; };
 		2A505F622330B6F300B9D908 /* LineDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A505F612330B6F300B9D908 /* LineDetail.swift */; };
 		2A7358AD22E536D400A15318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AC22E536D400A15318 /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A3E0E462331E4A700ACE7F8 /* SlowZoneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowZoneList.swift; sourceTree = "<group>"; };
+		2A3E0E482331E4C700ACE7F8 /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
 		2A505F5F232F4AC400B9D908 /* LineList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineList.swift; sourceTree = "<group>"; };
 		2A505F612330B6F300B9D908 /* LineDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDetail.swift; sourceTree = "<group>"; };
 		2A7358A922E536D400A15318 /* GoodService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodService.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +218,8 @@
 			children = (
 				2A7358DD22E53C1200A15318 /* RouteList.swift */,
 				2A76E461232EFE7000E34C71 /* LineBoroughList.swift */,
+				2A3E0E462331E4A700ACE7F8 /* SlowZoneList.swift */,
+				2A3E0E482331E4C700ACE7F8 /* FavoriteList.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3E0E472331E4A700ACE7F8 /* SlowZoneList.swift in Sources */,
 				2A7358E222E53D3100A15318 /* RouteRow.swift in Sources */,
 				2AC3DE0522FF5E4700951011 /* RouteMapStopRoute.swift in Sources */,
 				2A7358AD22E536D400A15318 /* AppDelegate.swift in Sources */,
@@ -325,6 +332,7 @@
 				2A7358DA22E53B2A00A15318 /* RouteStatus.swift in Sources */,
 				2A7358CE22E53A6600A15318 /* TestData.swift in Sources */,
 				2A7358D922E53B2A00A15318 /* RouteDirection.swift in Sources */,
+				2A3E0E492331E4C700ACE7F8 /* FavoriteList.swift in Sources */,
 				2A7DD50B22ECD62800AF9C7E /* RouteStats.swift in Sources */,
 				2A7358E022E53D2400A15318 /* RouteDetail.swift in Sources */,
 				2A76E469232F09C400E34C71 /* LineData.swift in Sources */,
