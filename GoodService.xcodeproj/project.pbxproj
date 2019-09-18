@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2A505F60232F4AC400B9D908 /* LineList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A505F5F232F4AC400B9D908 /* LineList.swift */; };
 		2A505F622330B6F300B9D908 /* LineDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A505F612330B6F300B9D908 /* LineDetail.swift */; };
-		2A5B1615231DC37C0038C1FE /* ImageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B1614231DC37C0038C1FE /* ImageTest.swift */; };
 		2A7358AD22E536D400A15318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AC22E536D400A15318 /* AppDelegate.swift */; };
 		2A7358AF22E536D400A15318 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AE22E536D400A15318 /* SceneDelegate.swift */; };
 		2A7358B122E536D400A15318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358B022E536D400A15318 /* ContentView.swift */; };
@@ -48,7 +47,6 @@
 /* Begin PBXFileReference section */
 		2A505F5F232F4AC400B9D908 /* LineList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineList.swift; sourceTree = "<group>"; };
 		2A505F612330B6F300B9D908 /* LineDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDetail.swift; sourceTree = "<group>"; };
-		2A5B1614231DC37C0038C1FE /* ImageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTest.swift; sourceTree = "<group>"; };
 		2A7358A922E536D400A15318 /* GoodService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7358AC22E536D400A15318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A7358AE22E536D400A15318 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				2A7358AC22E536D400A15318 /* AppDelegate.swift */,
 				2A7358AE22E536D400A15318 /* SceneDelegate.swift */,
 				2A7358B022E536D400A15318 /* ContentView.swift */,
-				2A5B1614231DC37C0038C1FE /* ImageTest.swift */,
 				2A7358C022E5394500A15318 /* Models */,
 				2A7358C222E53A6600A15318 /* View Models */,
 				2A7358C422E53A6600A15318 /* Services */,
@@ -322,7 +319,6 @@
 				2A7358AF22E536D400A15318 /* SceneDelegate.swift in Sources */,
 				2A505F60232F4AC400B9D908 /* LineList.swift in Sources */,
 				2A76E467232F00FB00E34C71 /* Line.swift in Sources */,
-				2A5B1615231DC37C0038C1FE /* ImageTest.swift in Sources */,
 				2A7DD50D22ECE10600AF9C7E /* RouteMaps.swift in Sources */,
 				2A7358CD22E53A6600A15318 /* RouteService.swift in Sources */,
 				2A7358D122E53A6600A15318 /* Extensions.swift in Sources */,

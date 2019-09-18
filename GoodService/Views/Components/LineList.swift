@@ -9,14 +9,24 @@
 import SwiftUI
 
 struct LineList: View {
+    var name: String
     var lines: [Line]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+//        NavigationView {
+            List(lines, id: \.self) { line in
+                NavigationLink(destination: LineDetail(line: line)) {
+                    Text(line.name)
+                }
+            }
+            .navigationBarTitle(Text(name))
+//        }
     }
+    
 }
 
 struct LineRow_Previews: PreviewProvider {
     static var previews: some View {
-        LineList(lines: routesInfo.lines["Manhattan"]!)
+        LineList(name: "Manhattan", lines: routesInfo.lines["Manhattan"]!)
     }
 }

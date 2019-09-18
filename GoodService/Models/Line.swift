@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Line: Decodable {
+struct Line: Decodable, Hashable {
     let id: String
     let name: String
 //    let routes: [[String: String]]

@@ -8,14 +8,15 @@
 
 import SwiftUI
 
-struct LinesDetail: View {
+struct LineDetail: View {
+    var line: Line
     var body: some View {
         Text("Hello World!")
     }
 }
 
-struct LinesDetail_Previews: PreviewProvider {
+struct LineDetail_Previews: PreviewProvider {
     static var previews: some View {
-        LinesDetail()
+        LineDetail(line: routesInfo.lines["Manhattan"]![0])
     }
 }

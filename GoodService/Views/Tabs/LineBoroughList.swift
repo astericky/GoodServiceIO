@@ -15,7 +15,7 @@ struct LineBoroughList: View {
     var body: some View {
         NavigationView {
             List(boroughs, id: \.self) { borough in
-                NavigationLink(destination: LineList(lines: self.routeInfo.lines[borough]!)) {
+                NavigationLink(destination: LineList(name: borough, lines: self.routeInfo.lines[borough]!)) {
                     Text(borough)
                 }
             }
