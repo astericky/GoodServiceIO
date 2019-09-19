@@ -23,4 +23,13 @@ final class RoutesInfoViewModel: ObservableObject {
             self.lines = $0.lines
         }
     }
+    
+    func getSlowLines() -> [Line] {
+        var lines = [Line]()
+        for (_, value) in self.lines {
+            lines = lines + value
+        }
+        lines.sort { $0.maxTravelTime > $1.maxTravelTime }
+        return Array(lines.prefix(10))
+    }
 }

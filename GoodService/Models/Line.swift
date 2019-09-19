@@ -12,7 +12,16 @@ struct Line: Decodable, Hashable {
     let id: String
     let name: String
     let status: String
+    let maxTravelTime: Double
     let routes: [LineRoute]
 //    let north: [LineData]
 //    let south: [LineData]
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case status
+        case maxTravelTime = "max_travel_time"
+        case routes
+    }
 }
