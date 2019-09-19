@@ -6,6 +6,7 @@
 //  Copyright © 2019 Chris Sanders. All rights reserved.
 //
 
+import Combine
 import SwiftUI
 
 struct SlowZoneList: View {
