@@ -10,11 +10,10 @@ import Combine
 import SwiftUI
 
 struct RouteDetail: View {
-    @ObservedObject var routeStats = RouteStatsViewModel()
-    
+
     @State var showModal = false
     
-    var route: Route
+    var route: InfoResponse.Route
     var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     
@@ -62,14 +61,15 @@ struct RouteDetail: View {
             .background(Color(red: 100 / 255, green: 100 / 255, blue: 100 / 255))
             .foregroundColor(Color.white)
                 
-            RouteDirectionTable(name: "South", routeDirectionList: route.south)
-            RouteDirectionTable(name: "North", routeDirectionList: route.north)
-        }.sheet(isPresented: $showModal) {
-            RouteDetailRouteMap(routeName: self.route.name)
+//            RouteDirectionTable(name: "South", routeDirectionList: route.south)
+//            RouteDirectionTable(name: "North", routeDirectionList: route.north)
         }
+//        .sheet(isPresented: $showModal) {
+//            RouteDetailRouteMap(routeName: self.route.name)
+//        }
     }
         
-    init(route: Route) {
+    init(route: InfoResponse.Route) {
         self.route = route
         
         self.backgroundColor = createBackground(from: route.color ?? "")
@@ -101,10 +101,10 @@ struct RouteDetail: View {
 }
 
 
-#if DEBUG
-struct RouteDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        RouteDetail(route: routesInfo.routes[8])
-    }
-}
-#endif
+//#if DEBUG
+//struct RouteDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RouteDetail(route: routesInfo.routes[8])
+//    }
+//}
+//#endif
