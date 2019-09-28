@@ -12,21 +12,23 @@ struct RouteRow: View {
     private let route: RouteRowViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ZStack(alignment: .bottom) {
-                HStack(alignment: .top) {
-                    routeName
-                    routeAlternateName
-                    Spacer()
+        NavigationLink(destination: RouteDetail(route: route)) {
+            VStack(alignment: .leading) {
+                ZStack(alignment: .bottom) {
+                    HStack(alignment: .top) {
+                        routeName
+                        routeAlternateName
+                        Spacer()
+                    }
+                    HStack(alignment: .bottom) {
+                       Spacer()
+                       routeStatus
+                   }
                 }
-                HStack(alignment: .bottom) {
-                   Spacer()
-                   routeStatus
-               }
+               
             }
-           
+            .padding()
         }
-        .padding()
     }
     
     init(viewModel: RouteRowViewModel) {

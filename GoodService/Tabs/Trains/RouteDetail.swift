@@ -13,7 +13,7 @@ struct RouteDetail: View {
 
     @State var showModal = false
     
-    var route: InfoResponse.Route
+    var route: RouteRowViewModel
     var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     
@@ -31,7 +31,7 @@ struct RouteDetail: View {
                         )
                         .background(backgroundColor)
                         .clipShape(Circle())
-                        Text(route.alternateName ?? "Hello World")
+                        Text(route.alternateName)
                             .font(.caption)
                     Spacer()
                 }
@@ -69,7 +69,7 @@ struct RouteDetail: View {
 //        }
     }
         
-    init(route: InfoResponse.Route) {
+    init(route: RouteRowViewModel) {
         self.route = route
         
         self.backgroundColor = createBackground(from: route.color ?? "")

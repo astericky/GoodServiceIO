@@ -13,11 +13,6 @@ struct RouteList: View {
     
     var body: some View {
         NavigationView {
-//            List(viewModel.routes, id: \.self) { route in
-//                NavigationLink(destination: RouteDetail(route: route)) {
-//                    RouteRow(viewModel: route)
-//                }
-//            }
             List(content: content)
                 .navigationBarTitle(Text("Trains"))
         }
@@ -33,20 +28,16 @@ private extension RouteList {
         ForEach(viewModel.routes, content: RouteRow.init(viewModel:))
     }
 
-//    func details(for viewModel: RouteRowViewModel) -> some View {
-//        RouteRow(viewModel: viewModel)
-//    }
-
     var loading: some View {
         Text("Loading...")
             .foregroundColor(.gray)
     }
 }
 
-//#if DEBUG
+#if DEBUG
 //struct RouteList_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RouteList()
 //    }
 //}
-//#endif
+#endif
