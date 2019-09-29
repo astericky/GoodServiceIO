@@ -11,11 +11,11 @@ import SwiftUI
 
 struct RouteDetail: View {
 
-    @State var showModal = false
+    @State private var showModal = false
     
-    var route: RouteRowViewModel
-    var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
-    var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
+    private var route: RouteRowViewModel
+    private var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
+    private var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     
     var body: some View {
         ScrollView {
@@ -61,8 +61,8 @@ struct RouteDetail: View {
             .background(Color(red: 100 / 255, green: 100 / 255, blue: 100 / 255))
             .foregroundColor(Color.white)
                 
-//            RouteDirectionTable(name: "South", routeDirectionList: route.south)
-//            RouteDirectionTable(name: "North", routeDirectionList: route.north)
+            RouteDirectionTable(name: "South", routeDirectionList: route.south)
+            RouteDirectionTable(name: "North", routeDirectionList: route.north)
         }
 //        .sheet(isPresented: $showModal) {
 //            RouteDetailRouteMap(routeName: self.route.name)
@@ -72,7 +72,7 @@ struct RouteDetail: View {
     init(route: RouteRowViewModel) {
         self.route = route
         
-        self.backgroundColor = createBackground(from: route.color ?? "")
+        self.backgroundColor = createBackground(from: route.color)
         
         switch route.status {
         case "Good Service":

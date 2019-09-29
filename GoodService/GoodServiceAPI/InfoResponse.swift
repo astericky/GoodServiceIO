@@ -49,7 +49,7 @@ struct InfoResponse: Codable {
         let delay: Int?
         
         enum CodingKeys: String, CodingKey {
-            case name
+            case name = "name"
             case parentName = "parent_name"
             case maxActualWait = "max_actual_headway"
             case maxScheduledWait =  "max_scheduled_headway"

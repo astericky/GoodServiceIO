@@ -31,6 +31,14 @@ struct RouteRowViewModel: Identifiable  {
         return item.status
     }
     
+    var north: [InfoResponse.RouteDirection] {
+        item.north
+    }
+    
+    var south: [InfoResponse.RouteDirection] {
+        item.south
+    }
+    
     init(item: InfoResponse.Route)  {
         self.item = item
     }
