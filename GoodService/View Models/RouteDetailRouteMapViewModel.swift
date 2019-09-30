@@ -10,9 +10,6 @@ import SwiftUI
 import Combine
 
 final class RouteDetailRouteMapViewModel: ObservableObject {
-//    @Published var routes = [String: RouteMapsResponse.Route]()
-//    @Published var stops = [String: RouteMapsResponse.Stop]()
-    
     @Published var routeMapsInfo: RouteMapsResponse?
     
     var name: String
