@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RouteResponse: Codable {
+struct RouteMapsResponse: Codable {
     let routes: [String: Route]
     let stops: [String: Stop]
     

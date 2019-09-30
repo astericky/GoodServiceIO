@@ -11,6 +11,7 @@ import Combine
 
 protocol GoodServiceFetchable {
     func getInfo() -> AnyPublisher<InfoResponse, GoodServiceError>
+    func getMaps() -> AnyPublisher<RouteMapsResponse, GoodServiceError>
 }
 
 class GoodServiceFetcher {
@@ -31,6 +32,23 @@ extension GoodServiceFetcher: GoodServiceFetchable {
         return session.dataTaskPublisher(for: URLRequest(url: url))
             .map { $0.data  }
             .decode(type: InfoResponse.self, decoder: JSONDecoder())
+            .mapError { error in
+                print(error)
+                return .network(description: error.localizedDescription)
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func getMaps() -> AnyPublisher<RouteMapsResponse, GoodServiceError> {
+        let urlString = "https://www.goodservice.io/api/routes"
+        guard let url = URL(string: urlString) else {
+            let error = GoodServiceError.network(description: "Couldn't create url.")
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        
+        return session.dataTaskPublisher(for: URLRequest(url: url))
+            .map { $0.data  }
+            .decode(type: RouteMapsResponse.self, decoder: JSONDecoder())
             .mapError { error in
                 print(error)
                 return .network(description: error.localizedDescription)

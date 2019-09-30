@@ -64,9 +64,9 @@ struct RouteDetail: View {
             RouteDirectionTable(name: "South", routeDirectionList: route.south)
             RouteDirectionTable(name: "North", routeDirectionList: route.north)
         }
-//        .sheet(isPresented: $showModal) {
-//            RouteDetailRouteMap(routeName: self.route.name)
-//        }
+        .sheet(isPresented: $showModal) {
+            RouteDetailRouteMap(routeName: self.route.name)
+        }
     }
         
     init(route: RouteRowViewModel) {

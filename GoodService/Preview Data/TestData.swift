@@ -10,7 +10,7 @@ import Foundation
 
 let routesInfo: InfoResponse = load("info.json")
 let statsInfo: StatusResponse = load("stats.json")
-let routeMapInfo: RouteResponse = load("route-map.json")
+let routeMapInfo: RouteMapsResponse = load("route-map.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     let data: Data
