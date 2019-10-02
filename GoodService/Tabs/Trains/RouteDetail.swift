@@ -10,13 +10,12 @@ import Combine
 import SwiftUI
 
 struct RouteDetail: View {
-    @ObservedObject var routeStats = RouteStatsViewModel()
+
+    @State private var showModal = false
     
-    @State var showModal = false
-    
-    var route: Route
-    var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
-    var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
+    private var route: RouteRowViewModel
+    private var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
+    private var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     
     var body: some View {
         ScrollView {
@@ -32,7 +31,7 @@ struct RouteDetail: View {
                         )
                         .background(backgroundColor)
                         .clipShape(Circle())
-                        Text(route.alternateName ?? "Hello World")
+                        Text(route.alternateName)
                             .font(.caption)
                     Spacer()
                 }
@@ -64,15 +63,16 @@ struct RouteDetail: View {
                 
             RouteDirectionTable(name: "South", routeDirectionList: route.south)
             RouteDirectionTable(name: "North", routeDirectionList: route.north)
-        }.sheet(isPresented: $showModal) {
+        }
+        .sheet(isPresented: $showModal) {
             RouteDetailRouteMap(routeName: self.route.name)
         }
     }
         
-    init(route: Route) {
+    init(route: RouteRowViewModel) {
         self.route = route
         
-        self.backgroundColor = createBackground(from: route.color ?? "")
+        self.backgroundColor = createBackground(from: route.color)
         
         switch route.status {
         case "Good Service":
@@ -101,10 +101,10 @@ struct RouteDetail: View {
 }
 
 
-#if DEBUG
-struct RouteDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        RouteDetail(route: routesInfo.routes[8])
-    }
-}
-#endif
+//#if DEBUG
+//struct RouteDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RouteDetail(route: routesInfo.routes[8])
+//    }
+//}
+//#endif

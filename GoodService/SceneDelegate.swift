@@ -21,8 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
+            
+            let goodServiceFetcher = GoodServiceFetcher()
+            let viewModel = RoutesInfoViewModel(goodServiceFetcher: goodServiceFetcher)
+            let tabsView = ContentView(viewModel: viewModel)
+            
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView())
+            window.rootViewController = UIHostingController(rootView: tabsView)
             self.window = window
             window.makeKeyAndVisible()
         }

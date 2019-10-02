@@ -10,13 +10,13 @@ import SwiftUI
 
 struct RouteDetailRouteMap: View {
     @Environment(\.presentationMode) var presentation
-    @ObservedObject var routeMaps = RouteMapsViewModel()
+    @ObservedObject var routeMapsInfo: RouteDetailRouteMapViewModel
     
     var routeName: String
     var routeBackgroundColor =  Color(red: 0.0, green: 0.0, blue: 0.0)
     var northRoute = [String]()
     var southRoute = [String]()
-    var stops = [RouteMapStop]()
+    var stops = [RouteMapsResponse.Stop]()
     
     var body: some View {
         VStack {
@@ -28,17 +28,17 @@ struct RouteDetailRouteMap: View {
                         width: 50,
                         height: 50
                     )
-                    .background(routeBackgroundColor)
+                    .background(routeMapsInfo.routeBackgroundColor)
                     .clipShape(Circle())
             }
             .padding()
             ScrollView() {
                 VStack(spacing: 0) {
-                    ForEach(stops, id: \.id) { stop in
+                    ForEach(routeMapsInfo.stops, id: \.id) { stop in
                         HStack() {
                             ZStack {
                                 Rectangle()
-                                    .fill(self.routeBackgroundColor)
+                                    .fill(self.routeMapsInfo.routeBackgroundColor)
                                     .frame(width: 12, height: 32)
                                 Circle()
                                     .fill(Color.white)
@@ -59,24 +59,10 @@ struct RouteDetailRouteMap: View {
     
     init(routeName: String) {
         self.routeName = routeName
-        
-        if let route = routeMaps.routes[routeName] {
-            self.routeBackgroundColor = Color.createBackground(from: route.color)
-            
-            if let northRoute = route.routings["north"]?[0],
-                let southRoute = route.routings["south"]?[0] {
-                
-                self.northRoute = northRoute
-                northRoute.forEach { routeItem in
-                    var route = routeItem
-                    route.removeLast()
-                    if let stop = routeMaps.stops[route] {
-                        stops.append(stop)
-                    }
-                }
-            }
-        }
-        
+        self.routeMapsInfo = RouteDetailRouteMapViewModel(
+            name: routeName,
+            goodServiceFetcher: GoodServiceFetcher()
+        )
     }
 }
 
