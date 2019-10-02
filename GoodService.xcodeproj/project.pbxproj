@@ -40,6 +40,8 @@
 		2A93BBCF233DB2B300814529 /* LineRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBCE233DB2B300814529 /* LineRowViewModel.swift */; };
 		2A93BBF12340240E00814529 /* RouteDirectionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBF02340240E00814529 /* RouteDirectionRowViewModel.swift */; };
 		2A93BBF5234026DC00814529 /* RouteDirectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBF4234026DC00814529 /* RouteDirectionRow.swift */; };
+		2A93BBF72343A38800814529 /* LineBoroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBF62343A38800814529 /* LineBoroughViewModel.swift */; };
+		2A93BBF923443E2A00814529 /* LineRouteRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBF823443E2A00814529 /* LineRouteRowViewModel.swift */; };
 		2AC3DDFF22FC66AC00951011 /* route-map.json in Resources */ = {isa = PBXBuildFile; fileRef = 2AC3DDFE22FC66AC00951011 /* route-map.json */; };
 		2AE1B7A8233880EF00BFD9A8 /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE1B7A7233880EF00BFD9A8 /* Parsing.swift */; };
 		2AE1B7B0233921BC00BFD9A8 /* InfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE1B7AF233921BC00BFD9A8 /* InfoResponse.swift */; };
@@ -81,6 +83,8 @@
 		2A93BBCE233DB2B300814529 /* LineRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineRowViewModel.swift; sourceTree = "<group>"; };
 		2A93BBF02340240E00814529 /* RouteDirectionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDirectionRowViewModel.swift; sourceTree = "<group>"; };
 		2A93BBF4234026DC00814529 /* RouteDirectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDirectionRow.swift; sourceTree = "<group>"; };
+		2A93BBF62343A38800814529 /* LineBoroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineBoroughViewModel.swift; sourceTree = "<group>"; };
+		2A93BBF823443E2A00814529 /* LineRouteRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineRouteRowViewModel.swift; sourceTree = "<group>"; };
 		2AC3DDFE22FC66AC00951011 /* route-map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "route-map.json"; sourceTree = "<group>"; };
 		2AE1B7A7233880EF00BFD9A8 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		2AE1B7AF233921BC00BFD9A8 /* InfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoResponse.swift; sourceTree = "<group>"; };
@@ -152,12 +156,12 @@
 		2A7358C222E53A6600A15318 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				2A0B96F22334A0DF0025A2F5 /* RouteDetailRouteMapViewModel.swift */,
 				2A0B96F12334A0DF0025A2F5 /* RoutesInfoViewModel.swift */,
 				2A0B96F32334A0DF0025A2F5 /* RouteStatsViewModel.swift */,
 				2A93BBCC233DB17600814529 /* RouteRowViewModel.swift */,
-				2A93BBF02340240E00814529 /* RouteDirectionRowViewModel.swift */,
+				2A93BBF62343A38800814529 /* LineBoroughViewModel.swift */,
 				2A93BBCE233DB2B300814529 /* LineRowViewModel.swift */,
+				2A93BBF823443E2A00814529 /* LineRouteRowViewModel.swift */,
 			);
 			name = "View Models";
 			path = "GoodService/View Models";
@@ -203,8 +207,8 @@
 			children = (
 				2A93BBC8233DA4AA00814529 /* Trains */,
 				2A93BBC9233DA4D300814529 /* Lines */,
-				2A93BBCA233DA52200814529 /* Favorites */,
 				2A93BBCB233DA54400814529 /* Slow Zones */,
+				2A93BBCA233DA52200814529 /* Favorites */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -226,8 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				2A0B96D123349F2A0025A2F5 /* LineBoroughList.swift */,
-				2A0B96E023349F740025A2F5 /* LineRow.swift */,
 				2A0B96DD23349F730025A2F5 /* LineList.swift */,
+				2A0B96E023349F740025A2F5 /* LineRow.swift */,
 				2A0B96DC23349F730025A2F5 /* LineDetail.swift */,
 			);
 			path = Lines;
@@ -253,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				2A0B96D923349F570025A2F5 /* RouteDetailRouteMap.swift */,
+				2A0B96F22334A0DF0025A2F5 /* RouteDetailRouteMapViewModel.swift */,
+				2A93BBF02340240E00814529 /* RouteDirectionRowViewModel.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				2A7358AD22E536D400A15318 /* AppDelegate.swift in Sources */,
 				2A7358AF22E536D400A15318 /* SceneDelegate.swift in Sources */,
 				2A93BBF5234026DC00814529 /* RouteDirectionRow.swift in Sources */,
+				2A93BBF72343A38800814529 /* LineBoroughViewModel.swift in Sources */,
 				2A0B96D823349F2A0025A2F5 /* FavoriteList.swift in Sources */,
 				2A0B96F42334A0DF0025A2F5 /* RoutesInfoViewModel.swift in Sources */,
 				2A0B96E223349F740025A2F5 /* LineDetail.swift in Sources */,
@@ -352,6 +359,7 @@
 				2A93BBCF233DB2B300814529 /* LineRowViewModel.swift in Sources */,
 				2A0B96F62334A0DF0025A2F5 /* RouteStatsViewModel.swift in Sources */,
 				2A0B96D723349F2A0025A2F5 /* RouteList.swift in Sources */,
+				2A93BBF923443E2A00814529 /* LineRouteRowViewModel.swift in Sources */,
 				2A0B96F02334A08F0025A2F5 /* ContentView.swift in Sources */,
 				2A0B96E623349F740025A2F5 /* LineRow.swift in Sources */,
 				2A93BBCD233DB17600814529 /* RouteRowViewModel.swift in Sources */,

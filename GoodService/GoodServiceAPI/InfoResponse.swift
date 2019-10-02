@@ -11,7 +11,7 @@ import Foundation
 
 struct InfoResponse: Codable {
     let routes: [Route]
-//    let lines: Line
+    let lines: [String: [Line]]
 
     struct Route: Codable {
         let id: String

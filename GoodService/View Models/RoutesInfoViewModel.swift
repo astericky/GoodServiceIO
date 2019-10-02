@@ -11,7 +11,7 @@ import SwiftUI
 
 final class RoutesInfoViewModel: ObservableObject, Identifiable {
     @Published var routes: [RouteRowViewModel] = []
-    @Published var lines: [LineRowViewModel] = []
+    @Published var lines: [LineBoroughViewModel] = []
     @Published var slowZones: [LineRowViewModel] = []
 
     private var goodServiceFetcher: GoodServiceFetcher
@@ -44,7 +44,12 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
                 receiveValue: { [weak self] info in
                     guard let self = self else { return }
                     self.routes = info.routes.map(RouteRowViewModel.init(item:))
-                    self.lines = []
+                    self.lines = info.lines.map({
+                        let lines = $0.value.map({
+                            LineRowViewModel(item: $0)
+                        })
+                        return LineBoroughViewModel.init(name: $0.key, lines: lines)
+                    })
                     self.slowZones = []
             })
             .store(in: &disposables)

@@ -19,11 +19,11 @@ struct ContentView: View {
                     Text("Trains")
                 }.tag(0)
             
-//            LineBoroughList()
-//                .tabItem {
-//                    Image("railway")
-//                    Text("Lines")
-//                }.tag(1)
+            LineBoroughList(viewModel: viewModel)
+                .tabItem {
+                    Image("railway")
+                    Text("Lines")
+                }.tag(1)
 //            
 //            SlowZoneList()
 //                .tabItem {
