@@ -23,6 +23,10 @@ struct LineRowViewModel: Identifiable {
         return item.routes
     }
     
+    var maxTravelTime: Double {
+        item.maxTravelTime
+    }
+    
     var status: String {
         item.status
     }

@@ -50,18 +50,20 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
                         })
                         return LineBoroughViewModel.init(name: $0.key, lines: lines)
                     })
-                    self.slowZones = []
+                    self.slowZones = self.getSlowLines()
             })
             .store(in: &disposables)
     }
-}
     
-//    func getSlowLines() -> [Line] {
-//        var lines = [Line]()
-//        for (_, value) in self.lines {
-//            lines = lines + value
-//        }
-//        lines.sort { $0.maxTravelTime > $1.maxTravelTime }
-//        return Array(lines.prefix(10))
-//    }
+    func getSlowLines() -> [LineRowViewModel] {
+        var lines = self.lines.flatMap({
+            $0.lines
+        })
+
+        lines.sort { $0.maxTravelTime > $1.maxTravelTime }
+        return Array(lines.prefix(10))
+    }
+}
+
+
 

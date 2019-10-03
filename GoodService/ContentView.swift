@@ -24,12 +24,12 @@ struct ContentView: View {
                     Image("railway")
                     Text("Lines")
                 }.tag(1)
-//            
-//            SlowZoneList()
-//                .tabItem {
-//                    Image("problem")
-//                    Text("Slow Zones")
-//                }.tag(2)
+            
+            SlowZoneList(viewModel: viewModel)
+                .tabItem {
+                    Image("problem")
+                    Text("Slow Zones")
+                }.tag(2)
 //            
 //            FavoriteList()
 //                .tabItem {
@@ -44,10 +44,10 @@ struct ContentView: View {
     }
 }
 
-#if DEBUG
+//#if DEBUG
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ContentView(viewModel: <#T##RoutesInfoViewModel#>)
+//        ContentView()
 //    }
 //}
-#endif
+//#endif

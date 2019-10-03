@@ -25,12 +25,15 @@ class GoodServiceFetcher {
 extension GoodServiceFetcher: GoodServiceFetchable {
     func getInfo() -> AnyPublisher<InfoResponse, GoodServiceError> {
         let urlString = "https://www.goodservice.io/api/info"
+        
         guard let url = URL(string: urlString) else {
             let error = GoodServiceError.network(description: "Couldn't create url.")
             return Fail(error: error).eraseToAnyPublisher()
         }
         return session.dataTaskPublisher(for: URLRequest(url: url))
-            .map { $0.data  }
+            .map {
+                print($0.data)
+                return $0.data  }
             .decode(type: InfoResponse.self, decoder: JSONDecoder())
             .mapError { error in
                 print(error)
@@ -38,6 +41,12 @@ extension GoodServiceFetcher: GoodServiceFetchable {
             }
             .eraseToAnyPublisher()
     }
+    
+//    #if DEBUG
+//    func getLocalInfo() -> AnyPublisher<InfoResponse, GoodServiceError> {
+//        return routesInfo
+//    }
+//    #endif
     
     func getMaps() -> AnyPublisher<RouteMapsResponse, GoodServiceError> {
         let urlString = "https://www.goodservice.io/api/routes"

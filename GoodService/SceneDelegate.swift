@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
-            
             let goodServiceFetcher = GoodServiceFetcher()
             let viewModel = RoutesInfoViewModel(goodServiceFetcher: goodServiceFetcher)
             let tabsView = ContentView(viewModel: viewModel)
