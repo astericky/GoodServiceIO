@@ -19,8 +19,8 @@ struct LineRowViewModel: Identifiable {
         return item.name
     }
     
-    var routes: [InfoResponse.LineRoute] {
-        return item.routes
+    var routes: [LineRouteRowViewModel] {
+        return item.routes.map(LineRouteRowViewModel.init(item:))
     }
     
     var maxTravelTime: Double {

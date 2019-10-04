@@ -13,10 +13,9 @@ struct LineList: View {
     
     var body: some View {
         List(viewModel.lines, id: \.self) { line in
-            Text(line.name)
-//            NavigationLink(destination: LineDetail(line: line)) {
-//                LineRow(line: line)
-//            }
+            NavigationLink(destination: LineDetail()) {
+                LineRow(viewModel: line)
+            }
         }
         .navigationBarTitle(Text(viewModel.name))
     }
