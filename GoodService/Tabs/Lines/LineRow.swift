@@ -8,35 +8,35 @@
 
 import SwiftUI
 
-//struct LineRow: View {
-//    var line: LineRowViewModel
-//    var body: some View {
-//        VStack {
-//            HStack {
-//                Text(line.name)
-//                Spacer()
-//                Text(line.status)
-//            }
-//            HStack {
-//                ForEach(line.routes, id: \.self) { route in
-//                    Text(route.name)
-//                        .foregroundColor(.white)
-//                        .frame(width: 25, height:25)
-//                        .background(route.color)
-//                        .clipShape(Circle())
-//                }
-//                Spacer()
-//            }
-//            .padding(0)
-//            Spacer()
-//        }
-//        .padding()
-//    }
-//    
-//    init(line: LineRowViewModel) {
-//        self.line = line
-//    }
-//}
+struct LineRow: View {
+    var viewModel: LineRowViewModel
+    var body: some View {
+        VStack {
+            HStack {
+                Text(viewModel.name)
+                Spacer()
+                Text(viewModel.status)
+            }
+            HStack {
+                ForEach(viewModel.routes, id: \.self) { route in
+                    Text(route.name)
+                        .foregroundColor(.white)
+                        .frame(width: 25, height:25)
+                        .background(route.color)
+                        .clipShape(Circle())
+                }
+                Spacer()
+            }
+            .padding(0)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    init(viewModel: LineRowViewModel) {
+        self.viewModel = viewModel
+    }
+}
 
 //struct LineRow_Previews: PreviewProvider {
 //    static var previews: some View {

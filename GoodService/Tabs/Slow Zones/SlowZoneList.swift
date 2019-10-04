@@ -14,10 +14,9 @@ struct SlowZoneList: View {
     var body: some View {
         NavigationView {
             List(viewModel.slowZones, id: \.self) { line in
-                Text(line.name)
-//                NavigationLink(destination: LineDetail(item: line)) {
-//                    LineRow(item: line)
-//                }
+                NavigationLink(destination: LineDetail()) {
+                    LineRow(viewModel: line)
+                }
             }
             .navigationBarTitle(Text("Slow Zones"))
         }
