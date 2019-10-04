@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct LineDetail: View {
-//    var line: Line
+    var viewModel: LineRowViewModel
     var body: some View {
-        Text("Hello World!")
+        Text(viewModel.name)
     }
     
-//    init(vie)
+    init(viewModel: LineRowViewModel) {
+        self.viewModel = viewModel
+    }
 }
 
 //struct LineDetail_Previews: PreviewProvider {

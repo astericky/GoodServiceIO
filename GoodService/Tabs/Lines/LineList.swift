@@ -13,7 +13,7 @@ struct LineList: View {
     
     var body: some View {
         List(viewModel.lines, id: \.self) { line in
-            NavigationLink(destination: LineDetail()) {
+            NavigationLink(destination: LineDetail(viewModel: line)) {
                 LineRow(viewModel: line)
             }
         }

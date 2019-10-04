@@ -14,7 +14,7 @@ struct SlowZoneList: View {
     var body: some View {
         NavigationView {
             List(viewModel.slowZones, id: \.self) { line in
-                NavigationLink(destination: LineDetail()) {
+                NavigationLink(destination: LineDetail(viewModel: line)) {
                     LineRow(viewModel: line)
                 }
             }
