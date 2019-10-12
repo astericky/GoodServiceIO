@@ -6,7 +6,7 @@
 //  Copyright © 2019 Chris Sanders. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct RouteRowViewModel: Identifiable  {
     private let item: InfoResponse.Route
@@ -23,8 +23,25 @@ struct RouteRowViewModel: Identifiable  {
         return item.alternateName ?? ""
     }
     
-    var color: String {
-        return item.color ?? ""
+    var color: Color {
+        Color.createBackground(from: item.color ?? "")
+    }
+    
+    var statusColor: Color {
+        switch self.item.status {
+        case "Good Service":
+            return Color.goodService
+        case "Not Good":
+            return Color.notGoodService
+        case "Service Change":
+            return Color.serviceChange
+        case "Delay":
+            return Color.delayedService
+        case "Not Scheduled":
+            fallthrough
+        default:
+            return Color.noService
+        }
     }
     
     var status: String {

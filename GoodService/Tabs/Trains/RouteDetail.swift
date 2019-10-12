@@ -10,12 +10,9 @@ import Combine
 import SwiftUI
 
 struct RouteDetail: View {
-
     @State private var showModal = false
     
     private var route: RouteRowViewModel
-    private var statusColor = Color(red: 0.0, green: 0.0, blue: 0.0)
-    private var backgroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
     
     var body: some View {
         ScrollView {
@@ -29,7 +26,7 @@ struct RouteDetail: View {
                             width: 100,
                             height: 100
                         )
-                        .background(backgroundColor)
+                        .background(route.color)
                         .clipShape(Circle())
                         Text(route.alternateName)
                             .font(.caption)
@@ -46,20 +43,7 @@ struct RouteDetail: View {
                 .padding(.trailing, 16)
             }
             
-            HStack {
-                Spacer()
-                VStack(alignment: .center) {
-                    Text(route.status)
-                        .font(.title)
-                        .foregroundColor(statusColor)
-                        .fixedSize()
-                    Text("STATUS")
-                }
-                Spacer(  )
-            }
-            .padding()
-            .background(Color(red: 100 / 255, green: 100 / 255, blue: 100 / 255))
-            .foregroundColor(Color.white)
+            StatusBar(status: route.status, color: route.statusColor)
                 
             RouteDirectionTable(name: "South", routeDirectionList: route.south)
             RouteDirectionTable(name: "North", routeDirectionList: route.north)
@@ -71,40 +55,16 @@ struct RouteDetail: View {
         
     init(route: RouteRowViewModel) {
         self.route = route
-        
-        self.backgroundColor = createBackground(from: route.color)
-        
-        switch route.status {
-        case "Good Service":
-            self.statusColor = Color.goodService
-        case "Not Good":
-            self.statusColor = Color.notGoodService
-        case "Service Change":
-            self.statusColor = Color.serviceChange
-        case "Delay":
-            self.statusColor = Color.delayedService
-        case "Not Scheduled":
-            fallthrough
-        default:
-            self.statusColor = Color.noService
-        }
-    }
-    
-    func createBackground(from hex: String) -> Color {
-        var hexString = ""
-        if !hex.isEmpty {
-            hexString = hex + "ff"
-            return Color(hex: hexString)
-        }
-        return Color(red: 118 / 255, green: 118 / 255, blue: 118 / 255)
     }
 }
 
 
-//#if DEBUG
+
 //struct RouteDetail_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RouteDetail(route: routesInfo.routes[8])
 //    }
 //}
-//#endif
+
+
+

@@ -23,6 +23,14 @@ struct LineRowViewModel: Identifiable {
         return item.routes.map(LineRouteRowViewModel.init(item:))
     }
     
+    var north: [InfoResponse.Line.LineDirection] {
+        return item.north
+    }
+    
+    var south: [InfoResponse.Line.LineDirection] {
+        return item.south
+    }
+    
     var maxTravelTime: Double {
         item.maxTravelTime
     }
