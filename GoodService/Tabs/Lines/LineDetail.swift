@@ -49,17 +49,3 @@ struct LineDetail_Previews: PreviewProvider {
     }
 }
 
-struct RouteHList: View {
-    var routes = [LineRouteRowViewModel]()
-    var body: some View {
-        HStack {
-            ForEach(routes, id: \.self) { route in
-                Text(route.name)
-                    .foregroundColor(.white)
-                    .frame(width: 25, height:25)
-                    .background(route.color)
-                    .clipShape(Circle())
-            }
-        }
-    }
-}

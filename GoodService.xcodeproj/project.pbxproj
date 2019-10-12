@@ -26,6 +26,7 @@
 		2A0B96F52334A0DF0025A2F5 /* RouteDetailRouteMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0B96F22334A0DF0025A2F5 /* RouteDetailRouteMapViewModel.swift */; };
 		2A0B96F62334A0DF0025A2F5 /* RouteStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0B96F32334A0DF0025A2F5 /* RouteStatsViewModel.swift */; };
 		2A443787235289F700D5074C /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A443786235289F700D5074C /* StatusBar.swift */; };
+		2A44378923528CF400D5074C /* RouteHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A44378823528CF400D5074C /* RouteHList.swift */; };
 		2A7358AD22E536D400A15318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AC22E536D400A15318 /* AppDelegate.swift */; };
 		2A7358AF22E536D400A15318 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AE22E536D400A15318 /* SceneDelegate.swift */; };
 		2A7358B322E536D500A15318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7358B222E536D500A15318 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		2A0B96F22334A0DF0025A2F5 /* RouteDetailRouteMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailRouteMapViewModel.swift; sourceTree = "<group>"; };
 		2A0B96F32334A0DF0025A2F5 /* RouteStatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStatsViewModel.swift; sourceTree = "<group>"; };
 		2A443786235289F700D5074C /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
+		2A44378823528CF400D5074C /* RouteHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteHList.swift; sourceTree = "<group>"; };
 		2A7358A922E536D400A15318 /* GoodService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7358AC22E536D400A15318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A7358AE22E536D400A15318 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				2A443786235289F700D5074C /* StatusBar.swift */,
+				2A44378823528CF400D5074C /* RouteHList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				2A0B96DA23349F570025A2F5 /* RouteDetailRouteMap.swift in Sources */,
 				2A0B96E523349F740025A2F5 /* RouteDetail.swift in Sources */,
 				2A0B96D623349F2A0025A2F5 /* SlowZoneList.swift in Sources */,
+				2A44378923528CF400D5074C /* RouteHList.swift in Sources */,
 				2A0B96E423349F740025A2F5 /* RouteDirectionTable.swift in Sources */,
 				2A93BBCF233DB2B300814529 /* LineRowViewModel.swift in Sources */,
 				2A0B96F62334A0DF0025A2F5 /* RouteStatsViewModel.swift in Sources */,
