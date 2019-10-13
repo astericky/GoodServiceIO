@@ -27,6 +27,9 @@
 		2A0B96F62334A0DF0025A2F5 /* RouteStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0B96F32334A0DF0025A2F5 /* RouteStatsViewModel.swift */; };
 		2A443787235289F700D5074C /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A443786235289F700D5074C /* StatusBar.swift */; };
 		2A44378923528CF400D5074C /* RouteHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A44378823528CF400D5074C /* RouteHList.swift */; };
+		2A44378B2352C21C00D5074C /* LineDirectionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A44378A2352C21C00D5074C /* LineDirectionTable.swift */; };
+		2A44378D2352C22F00D5074C /* LineDirectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A44378C2352C22F00D5074C /* LineDirectionRow.swift */; };
+		2A44378F2352C36700D5074C /* LineDirectionRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A44378E2352C36700D5074C /* LineDirectionRowViewModel.swift */; };
 		2A7358AD22E536D400A15318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AC22E536D400A15318 /* AppDelegate.swift */; };
 		2A7358AF22E536D400A15318 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7358AE22E536D400A15318 /* SceneDelegate.swift */; };
 		2A7358B322E536D500A15318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7358B222E536D500A15318 /* Assets.xcassets */; };
@@ -69,6 +72,9 @@
 		2A0B96F32334A0DF0025A2F5 /* RouteStatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStatsViewModel.swift; sourceTree = "<group>"; };
 		2A443786235289F700D5074C /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		2A44378823528CF400D5074C /* RouteHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteHList.swift; sourceTree = "<group>"; };
+		2A44378A2352C21C00D5074C /* LineDirectionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionTable.swift; sourceTree = "<group>"; };
+		2A44378C2352C22F00D5074C /* LineDirectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionRow.swift; sourceTree = "<group>"; };
+		2A44378E2352C36700D5074C /* LineDirectionRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDirectionRowViewModel.swift; sourceTree = "<group>"; };
 		2A7358A922E536D400A15318 /* GoodService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7358AC22E536D400A15318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A7358AE22E536D400A15318 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,9 +168,11 @@
 				2A0B96F12334A0DF0025A2F5 /* RoutesInfoViewModel.swift */,
 				2A0B96F32334A0DF0025A2F5 /* RouteStatsViewModel.swift */,
 				2A93BBCC233DB17600814529 /* RouteRowViewModel.swift */,
+				2A93BBF02340240E00814529 /* RouteDirectionRowViewModel.swift */,
 				2A93BBF62343A38800814529 /* LineBoroughViewModel.swift */,
 				2A93BBCE233DB2B300814529 /* LineRowViewModel.swift */,
 				2A93BBF823443E2A00814529 /* LineRouteRowViewModel.swift */,
+				2A44378E2352C36700D5074C /* LineDirectionRowViewModel.swift */,
 			);
 			name = "View Models";
 			path = "GoodService/View Models";
@@ -236,6 +244,8 @@
 				2A0B96DD23349F730025A2F5 /* LineList.swift */,
 				2A0B96E023349F740025A2F5 /* LineRow.swift */,
 				2A0B96DC23349F730025A2F5 /* LineDetail.swift */,
+				2A44378A2352C21C00D5074C /* LineDirectionTable.swift */,
+				2A44378C2352C22F00D5074C /* LineDirectionRow.swift */,
 			);
 			path = Lines;
 			sourceTree = "<group>";
@@ -261,7 +271,6 @@
 			children = (
 				2A0B96D923349F570025A2F5 /* RouteDetailRouteMap.swift */,
 				2A0B96F22334A0DF0025A2F5 /* RouteDetailRouteMapViewModel.swift */,
-				2A93BBF02340240E00814529 /* RouteDirectionRowViewModel.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -351,9 +360,12 @@
 				2A0B96D823349F2A0025A2F5 /* FavoriteList.swift in Sources */,
 				2A0B96F42334A0DF0025A2F5 /* RoutesInfoViewModel.swift in Sources */,
 				2A0B96E223349F740025A2F5 /* LineDetail.swift in Sources */,
+				2A44378D2352C22F00D5074C /* LineDirectionRow.swift in Sources */,
 				2A0B96E323349F740025A2F5 /* LineList.swift in Sources */,
 				2A0B96EB2334A0420025A2F5 /* TestData.swift in Sources */,
 				2AE1B7A8233880EF00BFD9A8 /* Parsing.swift in Sources */,
+				2A44378F2352C36700D5074C /* LineDirectionRowViewModel.swift in Sources */,
+				2A44378B2352C21C00D5074C /* LineDirectionTable.swift in Sources */,
 				2A93BBC1233A719000814529 /* StatusResponse.swift in Sources */,
 				2A0B96DA23349F570025A2F5 /* RouteDetailRouteMap.swift in Sources */,
 				2A0B96E523349F740025A2F5 /* RouteDetail.swift in Sources */,

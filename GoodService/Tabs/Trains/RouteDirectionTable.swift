@@ -39,7 +39,6 @@ extension RouteDirectionTable {
     }
 }
 
-//#if DEBUG
 //struct RouteDirectionTable_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RouteDirectionTable(
@@ -49,4 +48,4 @@ extension RouteDirectionTable {
 //        .previewLayout(.sizeThatFits)
 //    }
 //}
-//#endif
+

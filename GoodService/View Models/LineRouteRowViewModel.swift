@@ -20,7 +20,7 @@ struct LineRouteRowViewModel: Identifiable  {
     }
     
     var color: Color {
-        Color.createBackground(from: item.color)
+        Color.createColor(from: item.color)
     }
     
     init(item: InfoResponse.LineRoute)  {

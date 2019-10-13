@@ -19,7 +19,7 @@ final class RouteDetailRouteMapViewModel: ObservableObject {
     }
     
     var routeBackgroundColor: Color {
-        Color.createBackground(from: route?.color ?? "")
+        Color.createColor(from: route?.color ?? "")
     }
     
     var stops: [RouteMapsResponse.Stop] {

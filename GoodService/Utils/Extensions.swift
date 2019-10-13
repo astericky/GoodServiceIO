@@ -17,7 +17,7 @@ extension Double {
 extension Color {
     static let lightInvertedBlue = Color(red:0.33, green:0.78, blue:1.00)
     static let linkBlue = Color(red:0.25, green:0.51, blue:0.77)
-    static let defaultGray = Color(red: 118 / 255, green: 118 / 255, blue: 118 / 25)
+    static let defaultGray = Color(red: 118 / 255, green: 118 / 255, blue: 118 / 255)
     
     static let goodService = Color(red: 46 / 255, green: 204 / 255, blue: 64 / 255)
     static let notGoodService = Color(red: 255 / 255, green: 226 / 255, blue: 33 / 255)
@@ -54,7 +54,7 @@ extension Color {
         }
     }
     
-    static func createBackground(from hex: String) -> Color {
+    static func createColor(from hex: String) -> Color {
         var hexString = ""
         if !hex.isEmpty {
             hexString = hex + "ff"

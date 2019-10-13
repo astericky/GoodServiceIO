@@ -14,6 +14,7 @@ struct LineDetail: View {
         VStack(alignment: .leading) {
             header
             statusBar
+            lineNorthDirectionTable
             Spacer()
         }
     }
@@ -40,6 +41,10 @@ extension LineDetail {
     var statusBar: some View {
         StatusBar(status: viewModel.status, color: viewModel.statusColor)
             .padding(.vertical, 20)
+    }
+    
+    var lineNorthDirectionTable: some View {
+        LineDirectionTable(name: "North", directionList: viewModel.north)
     }
 }
 

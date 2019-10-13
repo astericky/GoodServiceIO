@@ -42,17 +42,22 @@ struct LineRowViewModel: Identifiable {
     var statusColor: Color {
         switch self.item.status {
         case "Good Service":
-            return Color.goodService
+            return Color("color-good-service")
+//            return Color.goodService
         case "Not Good":
-            return Color.notGoodService
+//            return Color.notGoodService
+            return Color("color-not-good-service")
         case "Service Change":
-            return Color.serviceChange
+//            return Color.serviceChange
+            return Color("color-service-change")
         case "Delay":
-            return Color.delayedService
+//            return Color.delayedService
+            return Color("color-delayed-service")
         case "Not Scheduled":
             fallthrough
         default:
-            return Color.noService
+//            return Color.noService
+            return Color("color-no-service")
         }
     }
     
