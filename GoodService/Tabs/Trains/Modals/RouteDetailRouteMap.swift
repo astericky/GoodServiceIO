@@ -27,9 +27,10 @@ struct RouteDetailRouteMap: View {
                     .frame(
                         width: 50,
                         height: 50
-                    )
+                )
                     .background(routeMapsInfo.routeBackgroundColor)
                     .clipShape(Circle())
+                    .minimumScaleFactor(0.01)
             }
             .padding()
             ScrollView() {
@@ -44,7 +45,7 @@ struct RouteDetailRouteMap: View {
                                     .fill(Color.white)
                                     .frame(width: 6, height: 6)
                             }
-
+                            
                             Text(stop.name)
                                 .font(.caption)
                             Spacer()
@@ -56,7 +57,7 @@ struct RouteDetailRouteMap: View {
             
         }
     }
-
+    
     init(id: String, routeName: String) {
         self.routeName = routeName
         self.routeMapsInfo = RouteDetailRouteMapViewModel(
