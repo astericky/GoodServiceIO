@@ -9,13 +9,17 @@
 import SwiftUI
 
 struct RouteList: View {
+    @State var isLoading = false
     @ObservedObject var viewModel: RoutesInfoViewModel
     
     var body: some View {
-        NavigationView {
-            List(content: content)
-                .navigationBarTitle(Text("Trains"))
+        ZStack {
+            routesTable
+            if viewModel.routes.isEmpty {
+                loading
+            }
         }
+            
     }
     
     init(viewModel: RoutesInfoViewModel) {
@@ -24,13 +28,21 @@ struct RouteList: View {
 }
 
 private extension RouteList {
-    func content() -> some View {
-        ForEach(viewModel.routes, content: RouteRow.init(viewModel:))
-    }
-
     var loading: some View {
         Text("Loading...")
             .foregroundColor(.gray)
+    }
+    
+    var routesTable: some View {
+        NavigationView {
+            List(content: content)
+                .navigationBarTitle(Text("Trains"))
+        }
+        .blur(radius: self.viewModel.routes.isEmpty ? 10 : 0)
+    }
+    
+    func content() -> some View {
+        ForEach(viewModel.routes, content: RouteRow.init(viewModel:))
     }
 }
 

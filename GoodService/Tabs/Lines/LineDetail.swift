@@ -15,6 +15,7 @@ struct LineDetail: View {
             header
             statusBar
             lineNorthDirectionTable
+            lineSouthDirectionTable
             Spacer()
         }
     }
@@ -45,6 +46,10 @@ extension LineDetail {
     
     var lineNorthDirectionTable: some View {
         LineDirectionTable(name: "North", directionList: viewModel.north)
+    }
+    
+    var lineSouthDirectionTable: some View {
+        LineDirectionTable(name: "South", directionList: viewModel.south)
     }
 }
 

@@ -13,7 +13,11 @@ struct LineDirectionTable: View {
     var directionList: [LineDirectionRowViewModel]
 
     var body: some View {
-        Text(name)
+        VStack {
+            tableHeader
+            Divider()
+            ForEach(directionList, id: \.self, content: LineDirectionRow.init(viewModel:))
+        }
     }
     
     init(
@@ -22,6 +26,14 @@ struct LineDirectionTable: View {
     )  {
         self.name = name
         self.directionList = directionList.map { LineDirectionRowViewModel(item: $0) }
+    }
+}
+
+extension LineDirectionTable {
+    var tableHeader: some View {
+        Text(name)
+            .font(.headline)
+            .padding(.top, 20)
     }
 }
 
