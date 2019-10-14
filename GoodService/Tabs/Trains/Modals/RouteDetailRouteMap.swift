@@ -56,10 +56,11 @@ struct RouteDetailRouteMap: View {
             
         }
     }
-    
-    init(routeName: String) {
+
+    init(id: String, routeName: String) {
         self.routeName = routeName
         self.routeMapsInfo = RouteDetailRouteMapViewModel(
+            id: id,
             name: routeName,
             goodServiceFetcher: GoodServiceFetcher()
         )
@@ -69,7 +70,7 @@ struct RouteDetailRouteMap: View {
 #if DEBUG
 struct RouteDetailRouteMap_Previews: PreviewProvider {
     static var previews: some View {
-        RouteDetailRouteMap(routeName: "1")
+        RouteDetailRouteMap(id: "1", routeName: "1")
     }
 }
 #endif

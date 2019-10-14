@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct RouteList: View {
-    @State var isLoading = false
     @ObservedObject var viewModel: RoutesInfoViewModel
     
     var body: some View {
@@ -19,7 +18,6 @@ struct RouteList: View {
                 loading
             }
         }
-            
     }
     
     init(viewModel: RoutesInfoViewModel) {
@@ -38,11 +36,25 @@ private extension RouteList {
             List(content: content)
                 .navigationBarTitle(Text("Trains"))
         }
-        .blur(radius: self.viewModel.routes.isEmpty ? 10 : 0)
+        .blur(radius: viewModel.routes.isEmpty ? 10 : 0)
     }
     
     func content() -> some View {
-        ForEach(viewModel.routes, content: RouteRow.init(viewModel:))
+        //        ForEach(viewModel.routes, content: RouteRow.init(viewModel:))
+        ForEach(viewModel.routes, id: \.self) { route in
+            self.selectView(for: route)
+        }
+    }
+    
+    func selectView(for viewModel: RouteRowViewModel) -> some View {
+        if (viewModel.status == "No Service"
+            || viewModel.status == "Not Scheduled")  {
+            return AnyView(RouteNoServiceRow(viewModel: viewModel))
+        } else {
+            return AnyView(
+                RouteRow(viewModel: viewModel)
+            )
+        }
     }
 }
 

@@ -12,10 +12,11 @@ import Combine
 final class RouteDetailRouteMapViewModel: ObservableObject {
     @Published var routeMapsInfo: RouteMapsResponse?
     
+    var id: String
     var name: String
     
     var route: RouteMapsResponse.Route? {
-        routeMapsInfo?.routes[self.name]
+        routeMapsInfo?.routes[self.id]
     }
     
     var routeBackgroundColor: Color {
@@ -42,11 +43,13 @@ final class RouteDetailRouteMapViewModel: ObservableObject {
     private var disposables = Set<AnyCancellable>()
     
     init(
+        id: String,
         name: String,
         goodServiceFetcher: GoodServiceFetcher,
         scheduler: DispatchQueue = DispatchQueue(label: "RouteDetailRouteMapViewModel")
     ) {
         self.goodServiceFetcher = goodServiceFetcher
+        self.id = id
         self.name = name
         self.fetchMapInfo()
     }

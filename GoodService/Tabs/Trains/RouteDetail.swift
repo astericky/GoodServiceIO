@@ -49,7 +49,7 @@ struct RouteDetail: View {
             RouteDirectionTable(name: "North", routeDirectionList: route.north)
         }
         .sheet(isPresented: $showModal) {
-            RouteDetailRouteMap(routeName: self.route.name)
+            RouteDetailRouteMap(id: self.route.id, routeName: self.route.name)
         }
     }
         
