@@ -17,16 +17,23 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
     private var goodServiceFetcher: GoodServiceFetcher
     private var disposables = Set<AnyCancellable>()
     
+    private var timer: Timer?
+    
     init(
         goodServiceFetcher: GoodServiceFetcher,
         scheduler: DispatchQueue = DispatchQueue(label: "RoutesInfoViewModel")
     ) {
         self.goodServiceFetcher = goodServiceFetcher
-        
+
         self.fetchRoutesInfo()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { timer in
+            self.fetchRoutesInfo()
+        }
+
     }
 
-    func fetchRoutesInfo() {
+    @objc func fetchRoutesInfo() {
         goodServiceFetcher.getInfo()
             .receive(on: DispatchQueue.main)
             .sink(

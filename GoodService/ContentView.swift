@@ -22,7 +22,7 @@ struct ContentView: View {
             LineBoroughList(viewModel: viewModel)
                 .tabItem {
                     Image("railway")
-                    Text("Lines")
+                    Text("Lines") 
                 }.tag(1)
             
             SlowZoneList(viewModel: viewModel)

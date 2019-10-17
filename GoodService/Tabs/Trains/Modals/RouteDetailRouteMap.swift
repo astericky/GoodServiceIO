@@ -27,7 +27,7 @@ struct RouteDetailRouteMap: View {
                     .frame(
                         width: 50,
                         height: 50
-                )
+                    )
                     .background(routeMapsInfo.routeBackgroundColor)
                     .clipShape(Circle())
                     .minimumScaleFactor(0.01)
