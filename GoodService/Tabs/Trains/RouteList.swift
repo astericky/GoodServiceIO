@@ -14,9 +14,6 @@ struct RouteList: View {
     var body: some View {
         ZStack {
             routesTable
-            if viewModel.routes.isEmpty {
-                loading
-            }
         }
     }
     
@@ -26,21 +23,19 @@ struct RouteList: View {
 }
 
 private extension RouteList {
-    var loading: some View {
-        Text("Loading...")
-            .foregroundColor(.gray)
-    }
-    
     var routesTable: some View {
         NavigationView {
             List(content: content)
                 .navigationBarTitle(Text("Trains"))
+                .navigationBarItems(trailing: Button(action: {
+                    self.viewModel.fetchRoutesInfo()
+                }, label: {
+                    Text("Refresh")
+                }))
         }
-        .blur(radius: viewModel.routes.isEmpty ? 10 : 0)
     }
     
     func content() -> some View {
-        //        ForEach(viewModel.routes, content: RouteRow.init(viewModel:))
         ForEach(viewModel.routes, id: \.self) { route in
             self.selectView(for: route)
         }
