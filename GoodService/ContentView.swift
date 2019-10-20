@@ -37,7 +37,8 @@ struct ContentView: View {
                         Image(systemName: "star")
                         Text("Favorites")
                     }.tag(3)
-            }.blur(radius: viewModel.routes.isEmpty ? 10 : 0)
+            }
+            .blur(radius: viewModel.routes.isEmpty ? 10 : 0)
             
             if viewModel.routes.isEmpty {
                 loading
@@ -57,10 +58,8 @@ private extension ContentView {
     }
 }
 
-//#if DEBUG
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ContentView()
 //    }
 //}
-//#endif

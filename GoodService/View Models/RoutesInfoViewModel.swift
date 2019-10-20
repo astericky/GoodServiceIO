@@ -33,7 +33,7 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
 
     }
 
-    @objc func fetchRoutesInfo() {
+    func fetchRoutesInfo() {
         goodServiceFetcher.getInfo()
             .receive(on: DispatchQueue.main)
             .sink(

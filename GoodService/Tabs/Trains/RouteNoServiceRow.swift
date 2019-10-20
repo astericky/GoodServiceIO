@@ -26,7 +26,7 @@ struct RouteNoServiceRow: View {
             }
             
         }
-        .padding()
+        .padding(10)
     }
     
     init(viewModel: RouteRowViewModel) {
@@ -37,10 +37,10 @@ struct RouteNoServiceRow: View {
 private extension RouteNoServiceRow {
     var routeName: some View {
         Text(route.name)
-            .font(.body)
+            .font(.callout)
             .fontWeight(.semibold)
             .foregroundColor(.white)
-            .frame(width: 60.0, height: 60.0)
+            .frame(width: 50.0, height: 50.0)
             .background(route.color)
             .clipShape(Circle())
     }
@@ -52,7 +52,8 @@ private extension RouteNoServiceRow {
     
     var routeStatus: some View {
         Text(route.status)
-            .font(.subheadline)
+            .font(.caption)
+            .padding(.trailing, 18)
     }
 }
 

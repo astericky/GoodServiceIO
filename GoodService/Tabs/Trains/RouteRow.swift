@@ -27,7 +27,7 @@ struct RouteRow: View {
                 }
                
             }
-            .padding()
+            .padding(10)
         }
     }
     
@@ -39,10 +39,10 @@ struct RouteRow: View {
 private extension RouteRow {
     var routeName: some View {
         Text(route.name)
-            .font(.body)
+            .font(.callout)
             .fontWeight(.semibold)
             .foregroundColor(.white)
-            .frame(width: 60.0, height: 60.0)
+            .frame(width: 50.0, height: 50.0)
             .background(route.color)
             .clipShape(Circle())
     }
@@ -54,7 +54,7 @@ private extension RouteRow {
     
     var routeStatus: some View {
         Text(route.status)
-            .font(.subheadline)
+            .font(.caption)
     }
 }
 
