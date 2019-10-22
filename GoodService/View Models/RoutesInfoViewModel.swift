@@ -10,6 +10,17 @@ import Combine
 import SwiftUI
 
 final class RoutesInfoViewModel: ObservableObject, Identifiable {
+    private var timestamp = ""
+    var datetime: String {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.timeZone = TimeZone.init(abbreviation: "EST")
+        let date = dateFormatter.date(from: timestamp)
+        let dateDisplayFomatter = DateFormatter()
+        dateDisplayFomatter.dateFormat = "MMM dd, yyyy h:mm a"
+        
+        return dateDisplayFomatter.string(from: date ?? Date())
+    }
     @Published var routes: [RouteRowViewModel] = []
     @Published var lines: [LineBoroughViewModel] = []
     @Published var slowZones: [LineRowViewModel] = []
@@ -50,6 +61,7 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
                 },
                 receiveValue: { [weak self] info in
                     guard let self = self else { return }
+                    self.timestamp = info.timestamp
                     self.routes = info.routes.map(RouteRowViewModel.init(item:))
                     self.lines = info.lines.map({
                         let lines = $0.value.map({
@@ -63,6 +75,7 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
     }
     
     func reset() {
+        self.timestamp = ""
         self.routes = []
         self.lines = []
         self.slowZones = []

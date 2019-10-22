@@ -10,6 +10,7 @@ import Foundation
 
 
 struct InfoResponse: Codable {
+    let timestamp: String
     let routes: [Route]
     let lines: [String: [Line]]
 

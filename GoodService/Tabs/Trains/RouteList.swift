@@ -27,11 +27,15 @@ private extension RouteList {
         NavigationView {
             List(content: content)
                 .navigationBarTitle(Text("Trains"))
-                .navigationBarItems(trailing: Button(action: {
-                    self.viewModel.fetchRoutesInfo()
-                }, label: {
-                    Text("Refresh")
-                }))
+                .navigationBarItems(trailing: HStack {
+                    Button(action: {
+                        self.viewModel.fetchRoutesInfo()
+                    }, label: {
+                        Image(systemName: "arrow.clockwise")
+                    })
+                    Text("Last Update: \(viewModel.datetime)")
+                        .font(.caption)
+                })
         }
     }
     
