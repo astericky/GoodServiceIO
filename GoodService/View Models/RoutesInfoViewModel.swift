@@ -27,13 +27,15 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
 
         self.fetchRoutesInfo()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
+            self.reset()
             self.fetchRoutesInfo()
         }
 
     }
 
     func fetchRoutesInfo() {
+        self.reset()
         goodServiceFetcher.getInfo()
             .receive(on: DispatchQueue.main)
             .sink(
@@ -41,9 +43,7 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
                     guard let self = self else { return }
                     switch value {
                     case .failure:
-                        self.routes = []
-                        self.lines = []
-                        self.slowZones = []
+                        self.reset()
                     case .finished:
                         break
                     }
@@ -60,6 +60,12 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
                     self.slowZones = self.getSlowLines()
             })
             .store(in: &disposables)
+    }
+    
+    func reset() {
+        self.routes = []
+        self.lines = []
+        self.slowZones = []
     }
     
     func getSlowLines() -> [LineRowViewModel] {
