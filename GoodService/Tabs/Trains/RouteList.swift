@@ -31,10 +31,12 @@ private extension RouteList {
                     Button(action: {
                         self.viewModel.fetchRoutesInfo()
                     }, label: {
-                        Image(systemName: "arrow.clockwise")
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text("Last Update: \(viewModel.datetime)")
+                                .font(.caption)
+                        }
                     })
-                    Text("Last Update: \(viewModel.datetime)")
-                        .font(.caption)
                 })
         }
     }
