@@ -31,8 +31,12 @@ extension LineList {
 //    }
 }
 
-//struct LineList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LineList(name: "Manhattan", lines: routesInfo.lines["Manhattan"]!)
-//    }
-//}
+let items = routesInfo.lines["Manhattan"]!.map {
+    LineRowViewModel(item: $0)
+}
+
+struct LineList_Previews: PreviewProvider {
+    static var previews: some View {
+        LineList(viewModel: LineBoroughViewModel(name: "Manhattan", lines: items))
+    }
+}

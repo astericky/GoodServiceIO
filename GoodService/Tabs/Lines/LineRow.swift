@@ -15,22 +15,24 @@ struct LineRow: View {
             HStack {
                 Text(viewModel.name)
                 Spacer()
-                Text(viewModel.status)
             }
-            HStack {
+            Spacer()
+            HStack(alignment: .bottom) {
                 ForEach(viewModel.routes, id: \.self) { route in
                     Text(route.name)
                         .foregroundColor(.white)
                         .frame(width: 25, height:25)
                         .background(route.color)
                         .clipShape(Circle())
+                        .minimumScaleFactor(0.01)
                 }
                 Spacer()
+                Text(viewModel.status)
+                    .font(.caption)
             }
             .padding(0)
-            Spacer()
         }
-        .padding()
+        .padding(10)
     }
     
     init(viewModel: LineRowViewModel) {
@@ -38,17 +40,17 @@ struct LineRow: View {
     }
 }
 
-//struct LineRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            LineRow(line: routesInfo.lines["Manhattan"]![0])
-//                .previewLayout(.fixed(width: 320, height: 90))
-//
-//            LineRow(line: routesInfo.lines["Manhattan"]![1])
-//                .previewLayout(.fixed(width: 320, height: 90))
-//
-//            LineRow(line: routesInfo.lines["Manhattan"]![2])
-//                .previewLayout(.fixed(width: 320, height: 90))
-//        }
-//    }
-//}
+struct LineRow_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            LineRow(viewModel: LineRowViewModel(item: routesInfo.lines["Manhattan"]![0]))
+                .previewLayout(.fixed(width: 320, height: 90))
+
+            LineRow(viewModel: LineRowViewModel(item: routesInfo.lines["Manhattan"]![1]))
+                .previewLayout(.fixed(width: 320, height: 90))
+
+            LineRow(viewModel: LineRowViewModel(item: routesInfo.lines["Manhattan"]![2]))
+                .previewLayout(.fixed(width: 320, height: 90))
+        }
+    }
+}
