@@ -45,10 +45,6 @@ struct ContentView: View {
             }
         }
     }
-    
-    init(viewModel: RoutesInfoViewModel) {
-        self.viewModel = viewModel
-    }
 }
 
 private extension ContentView {

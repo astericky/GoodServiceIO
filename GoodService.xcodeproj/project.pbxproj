@@ -37,6 +37,7 @@
 		2A7358B622E536D500A15318 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7358B522E536D500A15318 /* Preview Assets.xcassets */; };
 		2A7358B922E536D500A15318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A7358B722E536D500A15318 /* LaunchScreen.storyboard */; };
 		2A7358CF22E53A6600A15318 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A7358C822E53A6600A15318 /* info.json */; };
+		2A8398E8237264650000E287 /* FavoriteRoutesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A8398E6237264650000E287 /* FavoriteRoutesModel.xcdatamodeld */; };
 		2A93BBBF2339EC9B00814529 /* RouteMapsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBBE2339EC9B00814529 /* RouteMapsResponse.swift */; };
 		2A93BBC1233A719000814529 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBC0233A719000814529 /* StatusResponse.swift */; };
 		2A93BBC3233A73C400814529 /* GoodServiceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93BBC2233A73C400814529 /* GoodServiceFetcher.swift */; };
@@ -85,6 +86,7 @@
 		2A7358B822E536D500A15318 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A7358BA22E536D500A15318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A7358C822E53A6600A15318 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		2A8398E7237264650000E287 /* FavoriteRoutesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteRoutesModel.xcdatamodel; sourceTree = "<group>"; };
 		2A93BBBE2339EC9B00814529 /* RouteMapsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapsResponse.swift; sourceTree = "<group>"; };
 		2A93BBC0233A719000814529 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
 		2A93BBC2233A73C400814529 /* GoodServiceFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodServiceFetcher.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				2A76E463232EFE8100E34C71 /* Tabs */,
 				2A443785235289C600D5074C /* Components */,
+				2A8398E6237264650000E287 /* FavoriteRoutesModel.xcdatamodeld */,
 				2A7358AC22E536D400A15318 /* AppDelegate.swift */,
 				2A7358AE22E536D400A15318 /* SceneDelegate.swift */,
 				2A0B96EF2334A08F0025A2F5 /* ContentView.swift */,
@@ -370,6 +373,7 @@
 				2A44378F2352C36700D5074C /* LineDirectionRowViewModel.swift in Sources */,
 				2A44378B2352C21C00D5074C /* LineDirectionTable.swift in Sources */,
 				2A93BBC1233A719000814529 /* StatusResponse.swift in Sources */,
+				2A8398E8237264650000E287 /* FavoriteRoutesModel.xcdatamodeld in Sources */,
 				2A0B96DA23349F570025A2F5 /* RouteDetailRouteMap.swift in Sources */,
 				2A0B96E523349F740025A2F5 /* RouteDetail.swift in Sources */,
 				2A0B96D623349F2A0025A2F5 /* SlowZoneList.swift in Sources */,
@@ -582,6 +586,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A8398E6237264650000E287 /* FavoriteRoutesModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A8398E7237264650000E287 /* FavoriteRoutesModel.xcdatamodel */,
+			);
+			currentVersion = 2A8398E7237264650000E287 /* FavoriteRoutesModel.xcdatamodel */;
+			path = FavoriteRoutesModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2A7358A122E536D400A15318 /* Project object */;
 }

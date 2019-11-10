@@ -12,11 +12,29 @@ struct LineDirectionRow: View {
     var viewModel: LineDirectionRowViewModel
     
     var body: some View {
-        Text("Hello World!")
-    }
-    
-    init(viewModel: LineDirectionRowViewModel) {
-        self.viewModel = viewModel
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Delay")
+                Text("\(viewModel.delay)")
+                Spacer()
+            }
+            HStack {
+                Text("Actual Wait")
+                Text("\(viewModel.maxActualWait) minutes")
+                Spacer()
+            }
+            HStack {
+                Text("Scheduled Wait")
+                Text("\(viewModel.maxScheduledWait) minutes")
+                Spacer()
+            }
+            HStack {
+                Text("Traffic Condition")
+                Text("\(viewModel.trafficCondition)%")
+                Spacer()
+            }
+        }
+        .padding()
     }
 }
 

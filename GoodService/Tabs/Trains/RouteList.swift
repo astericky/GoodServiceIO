@@ -16,10 +16,6 @@ struct RouteList: View {
             routesTable
         }
     }
-    
-    init(viewModel: RoutesInfoViewModel) {
-        self.viewModel = viewModel
-    }
 }
 
 private extension RouteList {
@@ -27,14 +23,17 @@ private extension RouteList {
         NavigationView {
             List(content: content)
                 .navigationBarTitle(Text("Trains"))
-                .navigationBarItems(trailing: HStack {
+                .navigationBarItems(
+                  leading: HStack {
+                    Text("Last Update: \(viewModel.datetime)")
+                      .font(.caption)
+                  },
+                  trailing: HStack {
                     Button(action: {
                         self.viewModel.fetchRoutesInfo()
                     }, label: {
                         HStack {
                             Image(systemName: "arrow.clockwise")
-                            Text("Last Update: \(viewModel.datetime)")
-                                .font(.caption)
                         }
                     })
                 })

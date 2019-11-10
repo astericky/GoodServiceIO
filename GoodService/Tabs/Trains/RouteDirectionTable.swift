@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RouteDirectionTable: View {
     private var name: String
-    private  var routeDirectionList: [RouteDirectionRowViewModel]
+    private var routeDirectionList: [RouteDirectionRowViewModel]
 
     var body: some View {
         VStack {
@@ -39,13 +39,13 @@ extension RouteDirectionTable {
     }
 }
 
-//struct RouteDirectionTable_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RouteDirectionTable(
-//            name: routesInfo.routes[20].destinations.south[0],
-//            routeDirectionList: routesInfo.routes[20].south
-//        )
-//        .previewLayout(.sizeThatFits)
-//    }
-//}
+struct RouteDirectionTable_Previews: PreviewProvider {
+    static var previews: some View {
+        RouteDirectionTable(
+            name: routesInfo.routes[20].destinations.south[0],
+            routeDirectionList: routesInfo.routes[20].south
+        )
+        .previewLayout(.sizeThatFits)
+    }
+}
 
