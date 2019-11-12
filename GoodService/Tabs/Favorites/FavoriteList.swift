@@ -9,13 +9,17 @@
 import SwiftUI
 
 struct FavoriteList: View {
-    var body: some View {
-        Text("Favorites")
+  @ObservedObject var viewModel: RoutesInfoViewModel
+  
+  var body: some View {
+    List(viewModel.favoriteRoutes, id: \.self) { route in
+      Text("Hello chris")
     }
+  }
 }
 
-struct FavoriteList_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteList()
-    }
-}
+//struct FavoriteList_Previews: PreviewProvider {
+//  static var previews: some View {
+//    FavoriteList()
+//  }
+//}

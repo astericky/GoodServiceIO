@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct RouteRow: View {
+  @Environment(\.managedObjectContext) var managedObjectContent
+  
   private let route: RouteRowViewModel
   
   var body: some View {

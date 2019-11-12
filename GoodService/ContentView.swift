@@ -32,7 +32,7 @@ struct ContentView: View {
                         Text("Slow Zones")
                     }.tag(2)
                 
-                FavoriteList()
+              FavoriteList(viewModel: viewModel)
                     .tabItem {
                         Image(systemName: "star")
                         Text("Favorites")
