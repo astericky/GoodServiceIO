@@ -53,7 +53,6 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
   }
   
   func fetchRoutesInfo() {
-    print(favoriteRoutes)
     self.reset()
     goodServiceFetcher.getInfo()
       .receive(on: DispatchQueue.main)
