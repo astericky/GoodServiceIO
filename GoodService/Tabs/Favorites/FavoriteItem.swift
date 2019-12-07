@@ -13,7 +13,7 @@ struct FavoriteItem: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      ZStack {
+      ZStack(alignment: .bottom) {
         HStack(alignment: .top) {
           Text(favoriteItem.name)
             .font(.callout)
@@ -23,7 +23,7 @@ struct FavoriteItem: View {
             .background(favoriteItem.color)
             .clipShape(Circle())
           Text(favoriteItem.alternateName)
-            .font(.caption)
+            .font(.footnote)
           Spacer()
         }
         HStack {
