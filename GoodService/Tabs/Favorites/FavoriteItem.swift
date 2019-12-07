@@ -12,17 +12,42 @@ struct FavoriteItem: View {
   var favoriteItem: FavoriteItemViewModel
   
   var body: some View {
-    VStack {
-      HStack {
-        Text(favoriteItem.name)
-        Text(favoriteItem.alternateName)
-          .font(.caption)
-        Spacer()
-      }
-      HStack {
-        Spacer()
-        Text(favoriteItem.status)
+    VStack(alignment: .leading) {
+      ZStack {
+        HStack(alignment: .top) {
+          Text(favoriteItem.name)
+            .font(.callout)
+            .fontWeight(.semibold)
+            .foregroundColor(.white)
+            .frame(width: 50.0, height: 50.0)
+            .background(favoriteItem.color)
+            .clipShape(Circle())
+          Text(favoriteItem.alternateName)
+            .font(.caption)
+          Spacer()
+        }
+        HStack {
+          Spacer()
+          Text(favoriteItem.status)
+            .font(.caption)
+        }
       }
     }
+    .padding(10)
+  }
+}
+
+struct FavoriteItem_Preview: PreviewProvider {
+  static var previews: some View {
+    FavoriteItem(
+      favoriteItem: FavoriteItemViewModel(
+        id: "1",
+        name: "1",
+        alternateName: "Going North",
+        status: "Good",
+        hexColor: "#db2828"
+      )
+    )
+    .previewLayout(.fixed(width: 320, height: 90))
   }
 }
