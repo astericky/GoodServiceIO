@@ -9,53 +9,53 @@
 import SwiftUI
 
 struct RouteList: View {
-    @ObservedObject var viewModel: RoutesInfoViewModel
-    
-    var body: some View {
-        ZStack {
-            routesTable
-        }
+  @ObservedObject var viewModel: RoutesInfoViewModel
+  
+  var body: some View {
+    ZStack {
+      routesTable
     }
+  }
 }
 
 private extension RouteList {
-    var routesTable: some View {
-        NavigationView {
-            List(content: content)
-                .navigationBarTitle(Text("Trains"))
-                .navigationBarItems(
-                  leading: HStack {
-                    Text("Last Update: \(viewModel.datetime)")
-                      .font(.caption)
-                  },
-                  trailing: HStack {
-                    Button(action: {
-                        self.viewModel.fetchRoutesInfo()
-                    }, label: {
-                        HStack {
-                            Image(systemName: "arrow.clockwise")
-                        }
-                    })
-                })
-        }
+  var routesTable: some View {
+    NavigationView {
+      List(content: content)
+        .navigationBarTitle(Text("Trains"))
+        .navigationBarItems(
+          leading: HStack {
+            Text("Last Update: \(viewModel.datetime)")
+              .font(.caption)
+          },
+          trailing: HStack {
+            Button(action: {
+              self.viewModel.fetchRoutesInfo()
+            }, label: {
+              HStack {
+                Image(systemName: "arrow.clockwise")
+              }
+            })
+        })
     }
-    
-    func content() -> some View {
-        ForEach(viewModel.routes, id: \.self) { route in
-            self.selectView(for: route)
-        }
+  }
+  
+  func content() -> some View {
+    ForEach(viewModel.routes, id: \.self) { route in
+      self.selectView(for: route)
     }
-    
-    func selectView(for viewModel: RouteRowViewModel) -> some View {
-        if (viewModel.status == "No Service"
-            || viewModel.status == "Not Scheduled")  {
-            return AnyView(RouteNoServiceRow(viewModel: viewModel))
-        } else {
-            return AnyView(
-                RouteRow(viewModel: viewModel)
-            )
-        }
+  }
+  
+  func selectView(for viewModel: RouteRowViewModel) -> some View {
+    if (viewModel.status == "No Service"
+      || viewModel.status == "Not Scheduled")  {
+      return AnyView(RouteNoServiceRow(viewModel: viewModel))
+    } else {
+      return AnyView(
+        RouteRow(viewModel: viewModel)
+      )
     }
+  }
 }
 
 

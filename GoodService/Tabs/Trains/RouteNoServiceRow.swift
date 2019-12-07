@@ -9,52 +9,64 @@
 import SwiftUI
 
 struct RouteNoServiceRow: View {
-    private let route: RouteRowViewModel
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            ZStack(alignment: .bottom) {
-                HStack(alignment: .top) {
-                    routeName
-                    routeAlternateName
-                    Spacer()
-                }
-                HStack(alignment: .bottom) {
-                    Spacer()
-                    routeStatus
-                }
-            }
-            
+  @Environment(\.managedObjectContext) var moc
+  @FetchRequest(
+    entity: FavoriteRoutes.entity(),
+    sortDescriptors: [
+      NSSortDescriptor(keyPath: \FavoriteRoutes.name, ascending: true)
+    ]
+  ) var favoriteRoutes: FetchedResults<FavoriteRoutes>
+  
+  private var isFavorite: Bool {
+    favoriteRoutes.contains(where: { $0.id == route.id })
+  }
+
+  private let route: RouteRowViewModel
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      ZStack(alignment: .bottom) {
+        HStack(alignment: .top) {
+          routeName
+          routeAlternateName
+          Spacer()
         }
-        .padding(10)
+        HStack(alignment: .bottom) {
+          Spacer()
+          routeStatus
+        }
+      }
+      
     }
-    
-    init(viewModel: RouteRowViewModel) {
-        self.route = viewModel
-    }
+    .padding(10)
+  }
+  
+  init(viewModel: RouteRowViewModel) {
+    self.route = viewModel
+  }
 }
 
 private extension RouteNoServiceRow {
-    var routeName: some View {
-        Text(route.name)
-            .font(.callout)
-            .fontWeight(.semibold)
-            .foregroundColor(.white)
-            .frame(width: 50.0, height: 50.0)
-            .background(route.color)
-            .clipShape(Circle())
-    }
-    
-    var routeAlternateName: some View {
-        Text(route.alternateName)
-            .font(.footnote)
-    }
-    
-    var routeStatus: some View {
-        Text(route.status)
-            .font(.caption)
-            .padding(.trailing, 18)
-    }
+  var routeName: some View {
+    Text(route.name)
+      .font(.callout)
+      .fontWeight(.semibold)
+      .foregroundColor(.white)
+      .frame(width: 50.0, height: 50.0)
+      .background(route.color)
+      .clipShape(Circle())
+  }
+  
+  var routeAlternateName: some View {
+    Text(route.alternateName)
+      .font(.footnote)
+  }
+  
+  var routeStatus: some View {
+    Text(route.status)
+      .font(.caption)
+      .padding(.trailing, 18)
+  }
 }
 
 //#if DEBUG

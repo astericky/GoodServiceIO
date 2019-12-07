@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RouteRowViewModel: Identifiable  {
+struct RouteRowViewModel: Identifiable {
   private let item: InfoResponse.Route
   
   var id: String {
@@ -25,6 +25,10 @@ struct RouteRowViewModel: Identifiable  {
   
   var color: Color {
     Color.createColor(from: item.color ?? "")
+  }
+  
+  var colorHex: String {
+    item.color ?? ""
   }
   
   var statusColor: Color {
@@ -47,8 +51,6 @@ struct RouteRowViewModel: Identifiable  {
   var status: String {
     return item.status
   }
-  
-  var isFavorite = false
   
   var north: [InfoResponse.RouteDirection] {
     item.north

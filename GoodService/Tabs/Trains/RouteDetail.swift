@@ -10,9 +10,20 @@ import Combine
 import SwiftUI
 
 struct RouteDetail: View {
+  @Environment(\.managedObjectContext) var moc
+  @FetchRequest(
+    entity: FavoriteRoutes.entity(),
+    sortDescriptors: [
+      NSSortDescriptor(keyPath: \FavoriteRoutes.name, ascending: true)
+    ]
+  ) var favoriteRoutes: FetchedResults<FavoriteRoutes>
+  
   @State private var showModal = false
   
-  var route: RouteRowViewModel
+  private var route: RouteRowViewModel
+  private var isFavorite: Bool {
+    favoriteRoutes.contains(where: { $0.id == route.id })
+  }
   
   var body: some View {
     ScrollView {
@@ -31,7 +42,7 @@ struct RouteDetail: View {
           Text(route.alternateName)
             .font(.caption)
           HStack {
-            isFavorite
+            isFavoriteButton
           }
           .padding(.all, 0)
           .padding(.top, 10)
@@ -57,16 +68,46 @@ struct RouteDetail: View {
       RouteDetailRouteMap(id: self.route.id, routeName: self.route.name)
     }
   }
+  
+  init(route: RouteRowViewModel) {
+    self.route = route
+  }
 }
 
 extension RouteDetail {
-  var isFavorite: some View {
-    Image(systemName: route.isFavorite ? "star" : "star.fill")
-      .resizable()
-      .frame(width: 30, height: 30)
-      .foregroundColor((route.isFavorite ? .gray : .yellow))
-  }
-}
+  var isFavoriteButton: some View {
+    Button(action: {
+      // TODO: Add check if it is already a favorite
+      // if it is remove it from favorites
+      // if it is not a favorite add it to favorites
+      if self.isFavorite {
+        let favoriteIndex = self.favoriteRoutes.firstIndex(where: { $0.id == self.route.id })
+        if let hasFavoriteIndex = favoriteIndex {
+          let favorite = self.favoriteRoutes[hasFavoriteIndex]
+          
+          self.moc.delete(favorite)
+          
+          try? self.moc.save()
+        }
+      } else {
+        let newFavorite = FavoriteRoutes(context: self.moc)
+        newFavorite.id = self.route.id
+        newFavorite.name = self.route.name
+        newFavorite.alternateName = self.route.alternateName
+        newFavorite.color = self.route.colorHex
+        newFavorite.status  = self.route.status
+        
+        try? self.moc.save()
+      }
+    }, label: {
+      HStack {
+        Image(systemName: self.isFavorite ? "star.fill" : "star")
+          .resizable()
+          .frame(width: 20, height: 20)
+          .foregroundColor((self.isFavorite ? .yellow : .gray))
+      }
+    })
+  }}
 
 
 

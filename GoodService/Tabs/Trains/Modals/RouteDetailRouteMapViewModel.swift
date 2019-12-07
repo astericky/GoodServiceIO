@@ -10,69 +10,74 @@ import SwiftUI
 import Combine
 
 final class RouteDetailRouteMapViewModel: ObservableObject {
-    @Published var routeMapsInfo: RouteMapsResponse?
-    
-    var id: String
-    var name: String
-    
-    var route: RouteMapsResponse.Route? {
-        routeMapsInfo?.routes[self.id]
-    }
-    
-    var routeBackgroundColor: Color {
-        Color.createColor(from: route?.color ?? "")
-    }
-    
-    var stops: [RouteMapsResponse.Stop] {
-        var stops = [RouteMapsResponse.Stop]()
-        if let northRoute = route?.routings["north"]?[0],
-            let southRoute = route?.routings["south"]?[0] {
-            
-            northRoute.forEach { routeItem in
-                var route = routeItem
-                route.removeLast()
-                if let stop = routeMapsInfo?.stops[route] {
-                    stops.append(stop)
-                }
-            }
-        }
-        return stops
-    }
-    
-    private var goodServiceFetcher: GoodServiceFetcher
-    private var disposables = Set<AnyCancellable>()
-    
-    init(
-        id: String,
-        name: String,
-        goodServiceFetcher: GoodServiceFetcher,
-        scheduler: DispatchQueue = DispatchQueue(label: "RouteDetailRouteMapViewModel")
-    ) {
-        self.goodServiceFetcher = goodServiceFetcher
-        self.id = id
-        self.name = name
-        self.fetchMapInfo()
-    }
-    
-    func fetchMapInfo() {
-        goodServiceFetcher.getMaps()
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] value in
-                    guard let self = self else { return }
-                    switch value {
-                    case .failure:
-                        self.routeMapsInfo = nil
-                        break
-                    case .finished:
-                        break
-                    }
-                },
-                receiveValue: { [weak self] routeMapInfo in
-                    guard let self = self else { return }
-                    self.routeMapsInfo = routeMapInfo
-            })
-            .store(in: &disposables)
-    }
-}
+  @Published var routeMapsInfo: RouteMapsResponse?
+  
+  var id: String
+  var name: String
+  
+  var route: RouteMapsResponse.Route? {
+    self.routeMapsInfo?.routes[self.id]
+  }
+  
+  var routeBackgroundColor: Color {
+    Color.createColor(from: route?.color ?? "")
+  }
+  
+  var stops: [RouteMapsResponse.Stop] {
+    var stops = [RouteMapsResponse.Stop]()
 
+    if let northRoute = route?.routings["north"]?[0],
+      let southRoute = route?.routings["south"]?[0] {
+      northRoute.forEach { routeItem in
+        var route = routeItem
+        route.removeLast()
+        
+        if let stop = routeMapsInfo?.stops[route] {
+          stops.append(stop)
+        }
+      }
+    }
+
+    return stops
+  }
+  
+  private var goodServiceFetcher: GoodServiceFetcher
+  private var disposables = Set<AnyCancellable>()
+  
+  init(
+    id: String,
+    name: String,
+    goodServiceFetcher: GoodServiceFetcher,
+    scheduler: DispatchQueue = DispatchQueue(label: "RouteDetailRouteMapViewModel")
+  ) {
+    self.goodServiceFetcher = goodServiceFetcher
+    self.id = id
+    self.name = name
+    self.fetchMapInfo()
+  }
+  
+  func fetchMapInfo() {
+    let subject = goodServiceFetcher.getMaps()
+    subject
+      .receive(on: DispatchQueue.main)
+      .sink(
+        receiveCompletion: { [weak self] value in
+          guard let self = self else { return }
+          switch value {
+          case .failure:
+            self.routeMapsInfo = nil
+            break
+          case .finished:
+            break
+          }
+        },
+        receiveValue: { routeMapInfo in
+          self.routeMapsInfo = routeMapInfo
+      })
+      .store(in: &disposables)
+  }
+  
+//  func getStops(routeMapInfoStops: [String: RouteMapsResponse.Stop]) -> [RouteMapsResponse.Stop] {
+//
+//  }
+}

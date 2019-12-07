@@ -9,9 +9,18 @@
 import SwiftUI
 
 struct RouteRow: View {
-  @Environment(\.managedObjectContext) var managedObjectContent
+  @Environment(\.managedObjectContext) var moc
+  @FetchRequest(
+    entity: FavoriteRoutes.entity(),
+    sortDescriptors: [
+      NSSortDescriptor(keyPath: \FavoriteRoutes.name, ascending: true)
+    ]
+  ) var favoriteRoutes: FetchedResults<FavoriteRoutes>
   
   private let route: RouteRowViewModel
+  private var isFavorite: Bool {
+    favoriteRoutes.contains(where: { $0.id == route.id })
+  }
   
   var body: some View {
     NavigationLink(destination: RouteDetail(route: route)) {
@@ -26,7 +35,7 @@ struct RouteRow: View {
           HStack(alignment: .bottom) {
             Spacer()
             VStack(alignment: .trailing) {
-              isFavorite
+              isFavoriteButton
               routeStatus
             }
           }
@@ -62,11 +71,11 @@ private extension RouteRow {
       .font(.caption)
   }
   
-  var isFavorite: some View {
-    Image(systemName: route.isFavorite ? "star" : "star.fill")
+  var isFavoriteButton: some View {
+    Image(systemName: self.isFavorite ? "star.fill" : "star")
       .resizable()
       .frame(width: 20, height: 20)
-      .foregroundColor((route.isFavorite ? .gray : .yellow))
+      .foregroundColor((self.isFavorite ? .yellow : .defaultGray))
   }
 }
 

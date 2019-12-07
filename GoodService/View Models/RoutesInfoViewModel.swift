@@ -24,13 +24,6 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
   @Published var routes: [RouteRowViewModel] = []
   @Published var lines: [LineBoroughViewModel] = []
   @Published var slowZones: [LineRowViewModel] = []
-  @Published var favorites: [RouteRowViewModel] = []
-  @FetchRequest(
-    entity: FavoriteRoutes.entity(),
-    sortDescriptors: [
-      NSSortDescriptor(keyPath: \FavoriteRoutes.name, ascending: true)
-    ]
-  ) var favoriteRoutes: FetchedResults<FavoriteRoutes>
   
   private var goodServiceFetcher: GoodServiceFetcher
   private var disposables = Set<AnyCancellable>()
@@ -69,21 +62,7 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
         receiveValue: { [weak self] info in
           guard let self = self else { return }
           self.timestamp = info.timestamp
-          self.routes = info.routes.map({ route in
-//            let isFavorite = self.favoriteRoutes.filter({ $0.id == route.id }).count > 0
-            let route = InfoResponse.Route(
-              id: route.id,
-              name: route.name,
-              status: route.status,
-              alternateName: route.alternateName,
-              color: route.color,
-              destinations: route.destinations,
-              north: route.north,
-              south: route.south
-//              isFavorite: isFavorite
-            )
-            return RouteRowViewModel(item: route)
-          })
+          self.routes = info.routes.map(RouteRowViewModel.init(item:))
           self.lines = info.lines.map({
             let lines = $0.value.map({
               LineRowViewModel(item: $0)

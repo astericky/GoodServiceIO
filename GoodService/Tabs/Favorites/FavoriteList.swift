@@ -10,10 +10,28 @@ import SwiftUI
 
 struct FavoriteList: View {
   @ObservedObject var viewModel: RoutesInfoViewModel
+  @Environment(\.managedObjectContext) var moc
+  @FetchRequest(
+    entity: FavoriteRoutes.entity(),
+    sortDescriptors: [
+      NSSortDescriptor(keyPath: \FavoriteRoutes.name, ascending: true)
+    ]
+  ) var favoriteRoutes: FetchedResults<FavoriteRoutes>
   
   var body: some View {
-    List(viewModel.favoriteRoutes, id: \.self) { route in
-      Text("Hello chris")
+    NavigationView {
+      List(favoriteRoutes, id: \.self) { favorite in
+        FavoriteItem(
+          favoriteItem: FavoriteItemViewModel(
+            id: favorite.id ?? "",
+            name: favorite.name ?? "",
+            alternateName: favorite.alternateName ?? "",
+            status: favorite.status ?? "",
+            hexColor: favorite.color ?? ""
+          )
+        )
+      }
+      .navigationBarTitle(Text("Favorites"))
     }
   }
 }
