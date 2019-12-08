@@ -38,7 +38,7 @@ final class RoutesInfoViewModel: ObservableObject, Identifiable {
     
     self.fetchRoutesInfo()
     
-    timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
+    timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { timer in
       self.reset()
       self.fetchRoutesInfo()
     }
