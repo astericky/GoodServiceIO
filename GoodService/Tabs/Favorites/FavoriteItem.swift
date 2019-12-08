@@ -14,26 +14,36 @@ struct FavoriteItem: View {
   var body: some View {
     VStack(alignment: .leading) {
       ZStack(alignment: .bottom) {
-        HStack(alignment: .top) {
-          Text(favoriteItem.name)
-            .font(.callout)
-            .fontWeight(.semibold)
-            .foregroundColor(.white)
-            .frame(width: 50.0, height: 50.0)
-            .background(favoriteItem.color)
-            .clipShape(Circle())
-          Text(favoriteItem.alternateName)
-            .font(.footnote)
-          Spacer()
-        }
-        HStack {
-          Spacer()
-          Text(favoriteItem.status)
-            .font(.caption)
-        }
+        favoriteName
+        favoriteStatus
       }
     }
     .padding(10)
+  }
+}
+
+extension FavoriteItem {
+  var favoriteName: some View {
+    HStack(alignment: .top) {
+      Text(favoriteItem.name)
+        .font(.callout)
+        .fontWeight(.semibold)
+        .foregroundColor(.white)
+        .frame(width: 50.0, height: 50.0)
+        .background(favoriteItem.color)
+        .clipShape(Circle())
+      Text(favoriteItem.alternateName)
+        .font(.footnote)
+      Spacer()
+    }
+  }
+  
+  var favoriteStatus: some View {
+    HStack {
+      Spacer()
+      Text(favoriteItem.status)
+        .font(.caption)
+    }
   }
 }
 
