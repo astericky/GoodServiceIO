@@ -9,33 +9,45 @@
 import SwiftUI
 
 struct LineDirectionRow: View {
-    var viewModel: LineDirectionRowViewModel
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("Delay")
-                Text("\(viewModel.delay)")
-                Spacer()
-            }
-            HStack {
-                Text("Actual Wait")
-                Text("\(viewModel.maxActualWait) minutes")
-                Spacer()
-            }
-            HStack {
-                Text("Scheduled Wait")
-                Text("\(viewModel.maxScheduledWait) minutes")
-                Spacer()
-            }
-            HStack {
-                Text("Traffic Condition")
-                Text("\(viewModel.trafficCondition)%")
-                Spacer()
-            }
-        }
-        .padding()
+  var viewModel: LineDirectionRowViewModel
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      HStack {
+        Text("Delay: ")
+          .font(.caption)
+          .fontWeight(.bold)
+        Text("\(viewModel.delay) minutes")
+          .font(.caption)
+        Spacer()
+      }
+      HStack {
+        Text("Actual Wait")
+          .font(.caption)
+          .fontWeight(.bold)
+        Text("\(viewModel.maxActualWait) minutes")
+          .font(.caption)
+        Spacer()
+      }
+      HStack {
+        Text("Scheduled Wait")
+          .font(.caption)
+          .fontWeight(.bold)
+        Text("\(viewModel.maxScheduledWait) minutes")
+          .font(.caption)
+        Spacer()
+      }
+      HStack {
+        Text("Traffic Condition")
+          .font(.caption)
+          .fontWeight(.bold)
+        Text("\(viewModel.trafficCondition)%")
+          .font(.caption)
+        Spacer()
+      }
     }
+    .padding()
+  }
 }
 
 //struct LineDirectionRow_Previews: PreviewProvider {
