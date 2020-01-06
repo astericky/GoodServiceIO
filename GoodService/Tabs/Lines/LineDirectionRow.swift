@@ -56,5 +56,6 @@ struct LineDirectionRow_Previews: PreviewProvider {
       return LineDirectionRow(viewModel:
         LineDirectionRowViewModel(item: item)
       )
+      .previewLayout(.sizeThatFits)
     }
 }
