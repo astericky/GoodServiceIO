@@ -50,8 +50,11 @@ struct LineDirectionRow: View {
   }
 }
 
-//struct LineDirectionRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LineDirectionRow()
-//    }
-//}
+struct LineDirectionRow_Previews: PreviewProvider {
+    static var previews: some View {
+      let item = routesInfo.lines["The Bronx"]![0].north[0]
+      return LineDirectionRow(viewModel:
+        LineDirectionRowViewModel(item: item)
+      )
+    }
+}
