@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+//class RouteViewModel: ObservableObject {
+//    @Published var id: String = ""
+//    @Published var name: String = ""
+//    @Published var alternateName: String = ""
+//    @Published var color: Color
+//    
+//}
+
 struct RouteRowViewModel: Identifiable {
   private let item: InfoResponse.Route
   

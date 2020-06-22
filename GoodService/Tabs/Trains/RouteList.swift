@@ -25,7 +25,7 @@ private extension RouteList {
         .navigationBarTitle(Text("Trains"))
         .navigationBarItems(
           leading: HStack {
-            Text("Last Update: \(viewModel.datetime)")
+            Text("Updated: \(viewModel.datetime)")
               .font(.caption)
           },
           trailing: HStack {
