@@ -20,24 +20,7 @@ final class RouteDetailRouteMapViewModel: ObservableObject {
     
     var trainStationCoordinates: [CLLocationCoordinate2D] = []
     var trainStationAnnotations: [RouteMapAnnotation] = []
-    
-    var stops: [RouteMapsResponse.Stop] {
-        var stops = [RouteMapsResponse.Stop]()
-        
-        if let northRoute = route?.routings["north"]?[0],
-            let southRoute = route?.routings["south"]?[0] {
-            northRoute.forEach { routeItem in
-                var route = routeItem
-                route.removeLast()
-                
-                if let stop = routeMapsInfo?.stops[route] {
-                    stops.append(stop)
-                }
-            }
-        }
-        
-        return stops
-    }
+    var trainStopDictionary: [String: CLLocationCoordinate2D] = [:]
     
     private var goodServiceFetcher = GoodServiceFetcher()
     private var disposables = Set<AnyCancellable>()
@@ -46,7 +29,7 @@ final class RouteDetailRouteMapViewModel: ObservableObject {
         self.id = id
         self.name = name
         self.fetchMapInfo()
-        self.getTrainRoute()
+        
     }
     
     func fetchMapInfo() {
@@ -68,6 +51,7 @@ final class RouteDetailRouteMapViewModel: ObservableObject {
                     self.routeMapsInfo = routeMapInfo
                     self.route = routeMapInfo.routes[self.id]
                     self.routeBackgroundColor = Color.createColor(from: self.route?.color ?? "")
+                    self.getTrainRoute()
             })
             .store(in: &disposables)
     }
@@ -83,21 +67,34 @@ final class RouteDetailRouteMapViewModel: ObservableObject {
             trainStationDataArray = trainStationData.components(separatedBy: "\n")
             trainStationDataArray.removeFirst()
             trainStationDataArray = trainStationDataArray.filter { $0 != "" }
-            trainStationDataArray = trainStationDataArray.filter { (station) in
+            trainStationDataArray = trainStationDataArray.filter { station in
                 let columns = station.components(separatedBy: ",")
                 return columns[7].components(separatedBy: " ").contains { $0 == self.name }
             }
             
-            trainStationCoordinates = trainStationDataArray.map { (station) in
+            var currentRoute = route?.routings["north"]?[0] ?? []
+            currentRoute = currentRoute.map { stop in
+                var stopName = stop
+                stopName.removeLast()
+                return stopName
+            }
+            
+            trainStationDataArray.forEach { station in
                 let columns = station.components(separatedBy: ",")
-                print("station: \(columns[2])\nroutes: \(columns[7])\ntitle: \(columns[5])\ncoordinate: \(columns[9]), \(columns[10])\n\n")
+                print("station: \(columns[2]), routes: \(columns[7]), title: \(columns[5]), coordinate: \(columns[9]), \(columns[10])\n\n")
                 
-                return CLLocationCoordinate2D(
+                let gtfsStopID = columns[2]
+                let coordinate = CLLocationCoordinate2D(
                     latitude: CLLocationDegrees(Double(columns[9])!),
                     longitude: CLLocationDegrees(Double(columns[10])!)
                 )
+                trainStopDictionary[gtfsStopID] = coordinate
             }
-            
+
+            trainStationCoordinates = currentRoute.map { stop in
+                trainStopDictionary[stop]!
+            }
+                        
             trainStationAnnotations = trainStationDataArray.map { station in
                 let columns = station.components(separatedBy: ",")
                 let coordindate = CLLocationCoordinate2D(
